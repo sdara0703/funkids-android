@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myapp="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.apps.appt8.MainActivity" >
+
+    <!-- android:icon="@drawable/ic_launcher" -->
+    <item android:id="@+id/itemid_1"
+        android:title="@string/home_tab"        
+        myapp:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/itemid_2"
+        android:title="@string/thumb_tab"        
+        myapp:showAsAction="ifRoom|withText" />
+    <item android:id="@+id/itemid_3"
+        android:title="@string/scroll_tab"
+        myapp:showAsAction="ifRoom|withText" />
+	<item android:id="@+id/itemid_4"
+        android:title="@string/more_tab"
+        myapp:showAsAction="ifRoom|withText" />
+</menu>
