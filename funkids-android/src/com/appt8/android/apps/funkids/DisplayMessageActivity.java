@@ -18,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class DisplayMessageActivity extends ActionBarActivity {
@@ -47,7 +48,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
              paint.setTextSize(44);
              paint.setColor(Color.GREEN);
              Intent intent = getIntent();
-             message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);          
+             message = intent.getStringExtra(MainActivity.MY_MESSAGE);          
              canvas.drawText("Welcome " + message + "...!!!", 50, 1200, paint);
              
         }
@@ -78,7 +79,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
 
 	public void showTextContent() {
 	    Intent intent = getIntent();
-	    message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
+	    message = intent.getStringExtra(MainActivity.MY_MESSAGE);
 		TextView textView = new TextView(this);
 	    textView.setTextSize(40);
 	    textView.setText(message);
@@ -89,29 +90,32 @@ public class DisplayMessageActivity extends ActionBarActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 
 		// Inflate the menu; this adds items to the action bar if it is present.
-		//getMenuInflater().inflate(R.menu.display_message, menu);
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
+
 		int id = item.getItemId();
 		if (id == R.id.action_settings) {
 			return true;
 		}
-		if (item.getTitle().equals("Home")) {
+		if (item.getTitle().toString().equals(getString(R.string.home_tab))) {	
 			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
-	
-		} else if (item.getTitle().equals("Thumb Images")) {
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
+			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, ThumbActivity.class);
 			startActivity(intent);
-		} else if (item.getTitle().equals("Scroll Images")) {
-		} else if (item.getTitle().equals("More")) {
+		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
+			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();		
+		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
+			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
+			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
+			this.recreate();
 		}
 		
 		return super.onOptionsItemSelected(item);

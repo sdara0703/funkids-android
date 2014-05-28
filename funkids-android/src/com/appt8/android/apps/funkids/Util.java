@@ -1,7 +1,12 @@
 package com.appt8.android.apps.funkids;
 
+import android.content.ClipData.Item;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 public final class Util {
 	public static String welcomeMsg = "";
@@ -22,5 +27,5 @@ public final class Util {
 		Bitmap resizedBitmap = Bitmap.createBitmap(bm,0,0,width,height,matrix,false);
 		return resizedBitmap;
 	}
-	
+
 }

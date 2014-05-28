@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2013 The Android Open Source Project
+ * Copyright (C) 2013 The Android Open Source Project, powered by Apache
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,9 +28,11 @@ import android.content.IntentSender;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -49,19 +51,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-/**
- * This the app's main Activity. It provides buttons for requesting the various features of the
- * app, displays the current location, the current address, and the status of the location client
- * and updating services.
- *
- * {@link #getLocation} gets the current location using the Location Services getLastLocation()
- * function. {@link #getAddress} calls geocoding to get a street address for the current location.
- * {@link #startUpdates} sends a request to Location Services to send periodic location updates to
- * the Activity.
- * {@link #stopUpdates} cancels previous periodic update requests.
- *
- * The update interval is hard-coded to be 5 seconds.
- */
 public class DisplayAddressActivity extends FragmentActivity implements
         LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
@@ -71,7 +60,7 @@ public class DisplayAddressActivity extends FragmentActivity implements
     private LocationRequest mLocationRequest = null;
 
     // Stores the current instantiation of the location client in this object
-    private LocationClient mLocationClient = null;
+    private LocationClient mLocationClient;
 
     // Handles to UI widgets
     private TextView mLatLng = null;
@@ -138,6 +127,12 @@ public class DisplayAddressActivity extends FragmentActivity implements
          */
         mLocationClient = new LocationClient(this, this, this);
     	tv = (TextView) this.findViewById(R.id.text_connection_status);
+    	
+    	//startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+    	Toast.makeText(this, "test", Toast.LENGTH_LONG );
+    	
+    	
+    	
     }
 
     /*
@@ -307,6 +302,7 @@ public class DisplayAddressActivity extends FragmentActivity implements
 	
 	            // Get the current location
 	            Location currentLocation = mLocationClient.getLastLocation();
+	            
 	
 	            // Display the current location in the UI
 	            mLatLng.setText("Current location is:" + LocationUtils.getLatLng(this, currentLocation));
@@ -341,7 +337,7 @@ public class DisplayAddressActivity extends FragmentActivity implements
 	
 	            // Get the current location
 	            Location currentLocation = mLocationClient.getLastLocation();
-	
+	            Toast.makeText(this, "In get Address:" + currentLocation.toString(), Toast.LENGTH_LONG).show();
 	            // Turn the indefinite activity indicator on
 	            mActivityIndicator.setVisibility(View.VISIBLE);
 	
@@ -531,8 +527,7 @@ public class DisplayAddressActivity extends FragmentActivity implements
                  * longitude of the current location. Return at most 1 address.
                  */
                 addresses = geocoder.getFromLocation(location.getLatitude(),
-                    location.getLongitude(), 1
-                );
+                    location.getLongitude(), 1);
 
                 // Catch network or other I/O problems.
                 } catch (IOException exception1) {

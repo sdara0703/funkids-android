@@ -28,12 +28,15 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBarActivity;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A sample showing how to zoom an image thumbnail to full-screen, by animating the bounds of the
@@ -43,7 +46,7 @@ import android.widget.TextView;
  * the entire activity content area. Touching the zoomed-in image hides it.</p>
  */
 @SuppressLint("NewApi")
-public class ThumbActivity extends FragmentActivity {
+public class ThumbActivity extends ActionBarActivity {
     /**
      * Hold a reference to the current animator, so that it can be canceled mid-way.
      */
@@ -120,16 +123,42 @@ public class ThumbActivity extends FragmentActivity {
         mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
     }
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                // Navigate "up" the demo structure to the launchpad activity.
-                // See http://developer.android.com/design/patterns/navigation.html for more.
-                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
-                return true;
-        }
+		
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		
+		if (item.getTitle().toString().equals(getString(R.string.home_tab))) {	
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
 
+		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
+			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, ThumbActivity.class);
+			this.recreate();
+			startActivity(intent);
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
+			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();	
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
+			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
+			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, DisplayAddressActivity.class);
+			startActivity(intent);
+		}
         return super.onOptionsItemSelected(item);
     }
 
@@ -201,7 +230,7 @@ public class ThumbActivity extends FragmentActivity {
         expandedImageView.setVisibility(View.VISIBLE);
         //SOUND
         
-        MediaPlayer mp = MediaPlayer.create(ThumbActivity.this, R.raw.sound_1);  
+        mp = MediaPlayer.create(ThumbActivity.this, R.raw.thumb_click);  
         mp.start();
         tv.setText(thumbView.getContentDescription());
         
