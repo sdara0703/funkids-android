@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/label_lat_lng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="@string/more"
+        android:textSize="20sp" />
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/setting_sound" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/checkBox1"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="19dp"
+        android:text="@string/settings"
+        android:textSize="@dimen/abc_action_bar_title_text_size" />
+
+</RelativeLayout>
