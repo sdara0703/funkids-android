@@ -23,6 +23,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 /**
  * An image button that uses a blue highlight (@link android.R.attr.selectableItemBackground} to
@@ -35,7 +36,6 @@ public class TouchHighlightImageButton extends ImageButton {
      * for the focused and pressed states.
      */
     private Drawable mForegroundDrawable;
-
     /**
      * The cached bounds of the view.
      */
@@ -54,6 +54,7 @@ public class TouchHighlightImageButton extends ImageButton {
     public TouchHighlightImageButton(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         init();
+     
     }
 
     /**
@@ -70,13 +71,14 @@ public class TouchHighlightImageButton extends ImageButton {
                 .obtainStyledAttributes(new int[]{android.R.attr.selectableItemBackground});
         mForegroundDrawable = a.getDrawable(0);
         mForegroundDrawable.setCallback(this);
+        
         a.recycle();
     }
 
     @Override
     protected void drawableStateChanged() {
         super.drawableStateChanged();
-
+        
         // Update the state of the highlight drawable to match
         // the state of the button.
         if (mForegroundDrawable.isStateful()) {
@@ -84,7 +86,7 @@ public class TouchHighlightImageButton extends ImageButton {
         }
 
         // Trigger a redraw.
-        invalidate();
+        invalidate();        
     }
 
     @Override

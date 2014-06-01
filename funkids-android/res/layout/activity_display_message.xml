@@ -3,6 +3,6 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.apps.appt8.DisplayMessageActivity"
+    tools:context="com.appt8.android.apps.funkids.DisplayMessageActivity"
     tools:ignore="MergeRootFrame" />
 

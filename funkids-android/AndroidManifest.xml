@@ -2,48 +2,83 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.appt8.android.apps.funkids"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0" >
 
-  <uses-sdk
-        android:minSdkVersion="8"
+    <uses-sdk
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-<!-- 4452000 -->
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <!-- 4452000 -->
     <application
-        android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
         android:uiOptions="splitActionBarWhenNarrow">
-        <meta-data 
+        <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version"
-      	/> 
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name="com.appt8.android.apps.funkids.MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+
+            <!--
+            intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            	<category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
         </activity>
         <activity
             android:name="com.appt8.android.apps.funkids.DisplayMessageActivity"
             android:label="@string/title_activity_display_message"
-            android:parentActivityName="com.apps.appt8.MainActivity" >
+            android:parentActivityName="com.appt8.android.apps.funkids.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.apps.appt8.MainActivity" />
         </activity>
         <activity
-            android:name="com.appt8.android.apps.funkids.ThumbActivity"
+            android:name="com.appt8.android.apps.funkids.AlphabetsActivity"
             android:label="@string/title_activity_thumb"
-            android:parentActivityName="com.apps.appt8.MainActivity" >
+            android:parentActivityName="com.appt8.android.apps.funkids.MainActivity" >
         </activity>
         <activity
             android:name="com.appt8.android.apps.funkids.DisplayAddressActivity"
-            android:label="@string/title_activity_display_address">
+            android:label="@string/title_activity_display_address" >
+        </activity>
+        <activity
+            android:name="com.appt8.android.apps.funkids.FullscreenActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.appt8.android.apps.funkids.NumbersActivity"
+            android:label="@string/title_activity_numbers" >
+        </activity>
+        <activity
+            android:name="com.appt8.android.apps.funkids.ItemListActivity"
+            android:label="@string/title_item_list" >
+        </activity>
+        <activity
+            android:name="com.appt8.android.apps.funkids.ItemDetailActivity"
+            android:label="@string/title_item_detail"
+            android:parentActivityName="com.appt8.android.apps.funkids.ItemListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.appt8.android.apps.funkids.ItemListActivity" />
+        </activity>
+        <activity
+            android:name="com.appt8.android.apps.funkids.MoreActivity"
+            android:label="@string/title_activity_more" >
         </activity>
     </application>
+
 </manifest>

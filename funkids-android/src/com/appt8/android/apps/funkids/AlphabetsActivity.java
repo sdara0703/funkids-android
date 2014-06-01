@@ -22,20 +22,23 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.Rect;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.NavUtils;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-import android.widget.TextView;
+//import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -46,7 +49,7 @@ import android.widget.Toast;
  * the entire activity content area. Touching the zoomed-in image hides it.</p>
  */
 @SuppressLint("NewApi")
-public class ThumbActivity extends ActionBarActivity {
+public class AlphabetsActivity extends ActionBarActivity {
     /**
      * Hold a reference to the current animator, so that it can be canceled mid-way.
      */
@@ -57,39 +60,45 @@ public class ThumbActivity extends ActionBarActivity {
      * subtle animations or animations that occur very frequently.
      */
     private int mShortAnimationDuration;
-    private TextView tv = null;
+   // private TextView tv = null;
     private MediaPlayer mp = null;
-    
+    private Utilities utilities = new Utilities();
+
+    BitmapDrawable bd;
+    Bitmap resizedBitmap;
+    Display display;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_thumb);
+        setContentView(R.layout.activity_alphabets);
         
+        display = getWindowManager().getDefaultDisplay();
         //SOUND
         //Effects.getInstance().init(this);
         
         
 
         // Hook up clicks on the thumbnail views.
-        tv = (TextView) this.findViewById(R.id.expanded_description);
-        final View thumb1View = findViewById(R.id.thumb_kids);
+       // tv = (TextView) this.findViewById(R.id.expanded_description);
+        final View thumb1View = findViewById(R.id.thumb_a);
         thumb1View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zoomImageFromThumb(thumb1View, R.drawable.kids);
+                zoomImageFromThumb(thumb1View, R.drawable.a);
+            	
             }
         });
 
-        final View thumb2View = findViewById(R.id.thumb_us);
+        final View thumb2View = findViewById(R.id.thumb_b);
         thumb2View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zoomImageFromThumb(thumb2View, R.drawable.us);
+                zoomImageFromThumb(thumb2View, R.drawable.b);
             }
         });
         
-        final View thumb3View = findViewById(R.id.thumb_surprise);
+        /*final View thumb3View = findViewById(R.id.thumb_surprise);
         thumb3View.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +127,7 @@ public class ThumbActivity extends ActionBarActivity {
             public void onClick(View view) {
                 zoomImageFromThumb(thumb6View, R.drawable.surprise);
             }
-        });
+        });*/
         // Retrieve and cache the system's default "short" animation time.
         mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
     }
@@ -143,20 +152,18 @@ public class ThumbActivity extends ActionBarActivity {
 			startActivity(intent);
 
 		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
-			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(this, ThumbActivity.class);
-			this.recreate();
-			startActivity(intent);
-			
+
 		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
 			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();	
+			Intent intent = new Intent(this, NumbersActivity.class);
+			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
 			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
 			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(this, DisplayAddressActivity.class);
+			Intent intent = new Intent(this, MoreActivity.class);
 			startActivity(intent);
 		}
         return super.onOptionsItemSelected(item);
@@ -187,6 +194,26 @@ public class ThumbActivity extends ActionBarActivity {
         // Load the high-resolution "zoomed-in" image.
         final ImageView expandedImageView = (ImageView) findViewById(R.id.expanded_image);
         expandedImageView.setImageResource(imageResId);
+        
+        //Resize the image to window sized image
+        expandedImageView.setDrawingCacheEnabled(true);
+        try {
+    	 	bd = (BitmapDrawable)expandedImageView.getDrawable();
+    	 	if (bd == null || bd.equals(null)) {
+    	 		Log.i("zoomImageFromThumb", "BitmapDrawable is NULL");
+    	 	}
+    	 	else {
+			        resizedBitmap = utilities.getWindowSizedBitmap(bd.getBitmap(), display);
+			        if (resizedBitmap != null) {
+			        	Log.i("zoomImageFromThumb", "resizedBitmap is not null");
+			        	expandedImageView.setImageBitmap(resizedBitmap);
+			        }
+		        }
+        } catch (Exception ex) {
+        	ex.printStackTrace();
+        	Log.i("zoomImageFromThumb", ex.getMessage());
+        }
+
 
         // Calculate the starting and ending bounds for the zoomed-in image. This step
         // involves lots of math. Yay, math.
@@ -224,15 +251,18 @@ public class ThumbActivity extends ActionBarActivity {
             startBounds.bottom += deltaHeight;
         }
 
-        // Hide the thumbnail and show the zoomed-in view. When the animation begins,
-        // it will position the zoomed-in view in the place of the thumbnail.
+        // Hide the thumb nail and show the zoomed-in view. When the animation begins,
+        // it will position the zoomed-in view in the place of the thumb nail.
         thumbView.setAlpha(0f);
         expandedImageView.setVisibility(View.VISIBLE);
-        //SOUND
         
-        mp = MediaPlayer.create(ThumbActivity.this, R.raw.thumb_click);  
-        mp.start();
-        tv.setText(thumbView.getContentDescription());
+        //SOUND
+        //utilities.playMedia(AlphabetsActivity.this, R.raw.thumb_click);
+        
+        
+       /* mp = MediaPlayer.create(AlphabetsActivity.this, R.raw.thumb_click);  
+        mp.start();*/
+        //mp.release();
         
         // Set the pivot point for SCALE_X and SCALE_Y transformations to the top-left corner of
         // the zoomed-in view (the default is the center of the view).
@@ -269,7 +299,8 @@ public class ThumbActivity extends ActionBarActivity {
         // and show the thumbnail instead of the expanded image.
         final float startScaleFinal = startScale;
         expandedImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
+            @SuppressLint("ShowToast")
+			@Override
             public void onClick(View view) {
                 if (mCurrentAnimator != null) {
                     mCurrentAnimator.cancel();
@@ -285,6 +316,8 @@ public class ThumbActivity extends ActionBarActivity {
                                 .ofFloat(expandedImageView, View.SCALE_X, startScaleFinal))
                         .with(ObjectAnimator
                                 .ofFloat(expandedImageView, View.SCALE_Y, startScaleFinal));
+                
+               
                 set.setDuration(mShortAnimationDuration);
                 set.setInterpolator(new DecelerateInterpolator());
                 set.addListener(new AnimatorListenerAdapter() {
@@ -293,7 +326,6 @@ public class ThumbActivity extends ActionBarActivity {
                         thumbView.setAlpha(1f);
                         expandedImageView.setVisibility(View.GONE);                        
                         mCurrentAnimator = null;
-                        tv.setVisibility(View.GONE);
                     }
 
                     @Override
@@ -301,7 +333,6 @@ public class ThumbActivity extends ActionBarActivity {
                         thumbView.setAlpha(1f);
                         expandedImageView.setVisibility(View.GONE);
                         mCurrentAnimator = null;
-                        tv.setVisibility(View.GONE);
                     }
                 });
                 set.start();

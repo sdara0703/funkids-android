@@ -14,7 +14,10 @@
     <string name="title_activity_display_message">MyMessage</string>
     <string name="edit_message">Enter your name</string>
     <string name="welcome">Welcome to AppT8!!!</string>
-
+    <string name="more">This fun learning activity for kids brought to you by AppT8.com. Developed by Srinivasa Dara. \n\n</string>
+	<string name="setting_sound">Enable Sound </string>
+	<string name="settings">Settings</string>
+	
     <!-- Action Bar titles -->
     <string name="home_tab">Home</string>
     <string name="alphabets_tab">Alphabets</string>
@@ -24,29 +27,40 @@
     <string name="title_activity_thumb">Thumb View</string>
 
     <!-- Thumbs -->
-    <string name="our_kids">Our kids</string>
-    <string name="husbend_wife">Husbend Wife</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
     <string name="surprise_pic">Surprise Image</string>
     <string name="message_zoom_touch_expand">Touch a photo to Zoom</string>
     <string name="description_zoom_touch_close">Touch this photo to close</string>
     <string name="title_activity_display_address">DisplayAddressActivity</string>
-    
+
+    <!-- Numbers -->
+    <string name="title_activity_numbers">Learn Numbers</string>
+    <string name="one">One</string>
+    <string name="two">Two</string>
+    <string name="three">Three</string>
+    <string name="four">Four</string>
+    <string name="five">Five</string>
+    <string name="six">Six</string>
+    <string name="seven">Seven</string>
+    <string name="eight">Eight</string>
+    <string name="nine">Nine</string>
+    <string name="ten">Ten</string>
+    <string name="marquee_number_text">ONE	TWO	THREE	FOUR	FIVE	SIX		SEVEN	EIGHT	NINE	TEN</string>
     <!-- My address -->
     <!-- Application identifiers -->
-    
+
     <string name="app_tag">LocationUpdates</string>
-    <string name="app_description">
-        Displays current address and current or updated location using Location Services
-    </string>
+    <string name="app_description">        Displays current address and current or updated location using Location Services</string>
 
     <!-- User interface labels and strings -->
+
 
     <!-- Address format -->
     <string name="address_output_string">%1$s %2$s %3$s</string>
 
     <!-- Latitude, longitude format -->
     <string name="latitude_longitude">%1$.8f, %2$.8f</string>
-
 
     <!-- Labels -->
     <string name="latlng">Lat/Long:</string>
@@ -59,21 +73,15 @@
     <string name="disconnected">Client disconnected</string>
     <string name="get_address">Get Address</string>
     <string name="get_location">Get Location</string>
-    <string name="illegal_argument_exception">
-        Illegal arguments: Latitude %1$.8f Longitude %2$.8f
-    </string>
+    <string name="illegal_argument_exception">        Illegal arguments: Latitude %1$.8f Longitude %2$.8f</string>
     <string name="invalid_action">Invalid intent action %1$s</string>
     <string name="invalid_integer_id">Invalid integer request ID: %1$s</string>
     <string name="IO_Exception_getFromLocation">IO Exception in Geocoder.getFromLocation()</string>
     <string name="location_requested">Periodic updates requested</string>
     <string name="location_updated">Location updated</string>
     <string name="location_update_error">Location update failed</string>
-    <string name="location_update_error_detail">
-        Location update error. code %1$d message %2$s
-    </string>
-    <string name="location_update_missing_update">
-        Location update error. No incoming location.
-    </string>
+    <string name="location_update_error_detail">        Location update error. code %1$d message %2$s</string>
+    <string name="location_update_missing_update">        Location update error. No incoming location.</string>
     <string name="location_updates_stopped">Periodic updates stopped</string>
     <string name="log_new_location">New location: %1$s</string>
     <string name="no_address_found">No address found for location</string>
@@ -84,14 +92,17 @@
     <string name="no_resolution">Google Play services: unable to resolve connection error.</string>
     <string name="periodic_update_stop">Stopping periodic updates</string>
     <string name="play_services_available">Google Play services is available</string>
-    <string name="request_location_updates_in_progress">
-        Can\'t request location updates, previous request hasn\'t finished
-    </string>
+    <string name="request_location_updates_in_progress">        Can\'t request location updates, previous request hasn\'t finished</string>
     <string name="start_updates">Start Updates</string>
     <string name="stop_updates">Stop Updates</string>
     <string name="unknown">--Unknown--</string>
-    <string name="unknown_activity_request_code">
-        Received an unknown activity request code %1$d in onActivityResult.
-    </string>
+    <string name="unknown_activity_request_code">        Received an unknown activity request code %1$d in onActivityResult.</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    
+    <string name="title_item_list">Items</string>
+    <string name="title_item_detail">Item Detail</string>
+    <string name="title_activity_more">MoreActivity</string>
 
 </resources>

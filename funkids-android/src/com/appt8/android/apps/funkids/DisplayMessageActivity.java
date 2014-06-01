@@ -36,7 +36,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         public void onDraw(Canvas canvas) {
              super.onDraw(canvas);
                           
-             Bitmap mypic = BitmapFactory.decodeResource(getResources(),R.drawable.kids);
+             Bitmap mypic = BitmapFactory.decodeResource(getResources(),R.drawable.a);
              //Bitmap resizedPic = getResizedBitmap(mypic,1000,1296);
              //message = mypic.getWidth() + ":" + mypic.getHeight() + "," + resizedPic.getWidth() + ":" + resizedPic.getHeight();
              
@@ -107,7 +107,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
 			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(this, ThumbActivity.class);
+			Intent intent = new Intent(this, AlphabetsActivity.class);
 			startActivity(intent);
 		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
 			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();		

@@ -41,7 +41,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -51,7 +54,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class DisplayAddressActivity extends FragmentActivity implements
+@SuppressLint("NewApi")
+public class DisplayAddressActivity extends ActionBarActivity implements
         LocationListener,
         GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener {
@@ -669,5 +673,43 @@ public class DisplayAddressActivity extends FragmentActivity implements
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return mDialog;
         }
+        
+        
+    }
+    @Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+		
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		
+		if (item.getTitle().toString().equals(getString(R.string.home_tab))) {	
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+
+		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
+			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, AlphabetsActivity.class);
+			startActivity(intent);
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
+			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();	
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
+			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
+			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
+			this.recreate();
+		}
+        return super.onOptionsItemSelected(item);
     }
 }
