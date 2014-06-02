@@ -1,24 +1,16 @@
 package com.appt8.android.apps.funkids;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils.TruncateAt;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,17 +18,7 @@ import android.widget.Toast;
 public class NumbersActivity extends ActionBarActivity {
 	MediaPlayer mp = null;
 	CharSequence message = "";
-/*	Handler handler = new Handler() {
-		  @Override
-		  public void handleMessage(Message msg) {
-				Bundle bundle = msg.getData();
-				String string = bundle.getString("myKey");
-				TextView myTextView = 
-		                     (TextView)findViewById(R.id.scroller);
-				myTextView.setText(string);
-				myTextView.setSelected(true);
-		     }
-		 };*/
+	Util util;
 	TextView txtView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +26,10 @@ public class NumbersActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_numbers);
 		txtView=(TextView) findViewById(R.id.scroller);
 		txtView.setSelected(true);
+		
+		
+		
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -107,8 +93,8 @@ public class NumbersActivity extends ActionBarActivity {
 		
 	public void ImageClicked(View view) {
 		
-		 mp = MediaPlayer.create(NumbersActivity.this, R.raw.thumb_click);  
-	     mp.start();
+		util = new Util();
+		util.playMedia(view.getContext(), R.raw.thumb_click);
 /*		this.message=view.getContentDescription();
 	   	Runnable runnable = new Runnable() {
 	        public void run() {
@@ -126,35 +112,5 @@ public class NumbersActivity extends ActionBarActivity {
 	        
       Thread mythread = new Thread(runnable);
       mythread.start();*/
-	}
-	
-	public TextView createMarquee(CharSequence message) {
-		FrameLayout frameLayout = (FrameLayout) findViewById(R.id.container);
-		TextView txtView = new TextView(this);
-		try {
-			frameLayout.removeView(findViewById(123456));
-		}
-		catch (Exception e) {
-			Toast.makeText(this,"No view found, nothing to delete",Toast.LENGTH_LONG).show();
-		}
-		finally {
-		
-		txtView.setId(123456);
-		txtView.setText(message);		
-		txtView.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
-		txtView.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
-		txtView.setEllipsize(TruncateAt.MARQUEE);
-		txtView.setFocusable(true);
-		txtView.setFocusableInTouchMode(true);
-		txtView.setSingleLine();
-		txtView.setMarqueeRepeatLimit(-1);
-		
-		txtView.requestFocus();
-		
-		txtView.setSelected(true);
-		frameLayout.addView(txtView, 1);
-		}
-		return txtView;
-				    //android:textAppearance="?android:attr/textAppearanceLarge"
 	}
 }

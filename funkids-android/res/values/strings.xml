@@ -11,10 +11,10 @@
     <string name="action_next">Next</string>
     <string name="action_finish">Finish</string>
     <string name="button_send">Click Me</string>
-    <string name="title_activity_display_message">MyMessage</string>
+    <string name="title_activity_display_message">Welcome</string>
     <string name="edit_message">Enter your name</string>
     <string name="welcome">Welcome to AppT8!!!</string>
-    <string name="more">This fun learning activity for kids brought to you by AppT8.com. Developed by Srinivasa Dara. \n\n</string>
+    <string name="courtesy_message">Thank you for downloading the app. This fun learning app for kids brought to you by AppT8.com. Developed by Srinivasa Dara. \n\n</string>
 	<string name="setting_sound">Enable Sound </string>
 	<string name="settings">Settings</string>
 	
@@ -24,11 +24,20 @@
     <string name="numbers_tab">Numbers</string>
     <string name="rhymes_tab">Rhymes</string>
     <string name="more_tab">More</string>
-    <string name="title_activity_thumb">Thumb View</string>
+    
 
-    <!-- Thumbs -->
+    <!-- Alphabets -->
+    <string name="title_activity_alphabets">Learn Alphabets</string>
     <string name="a">A</string>
     <string name="b">B</string>
+    <string name="c">C</string>
+    <string name="d">D</string>
+    <string name="e">E</string>
+    <string name="f">F</string>
+    <string name="g">G</string>
+    <string name="h">H</string>
+    <string name="i">I</string>
+    <string name="j">J</string>
     <string name="surprise_pic">Surprise Image</string>
     <string name="message_zoom_touch_expand">Touch a photo to Zoom</string>
     <string name="description_zoom_touch_close">Touch this photo to close</string>
@@ -103,6 +112,6 @@
     
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
-    <string name="title_activity_more">MoreActivity</string>
+    <string name="title_activity_more">Courtesy</string>
 
 </resources>

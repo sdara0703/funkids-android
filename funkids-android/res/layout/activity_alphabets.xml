@@ -2,27 +2,33 @@
     android:id="@+id/container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:orientation="vertical" >
+    android:layout_marginTop="0dp"
+    android:orientation="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true" 
+    android:background="@drawable/alphabets"
+     >
 
+<!-- android:background="@drawable/sunset" -->
     <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        
         android:scrollbarFadeDuration="0"
         android:soundEffectsEnabled="true" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="1dp"            
             android:orientation="horizontal" >
 
             <com.appt8.android.apps.funkids.TouchHighlightImageButton
                 android:id="@+id/thumb_a"
                 android:layout_width="100dp"
-                android:layout_height="75dp"
+                android:layout_height="100dp"
+                android:layout_marginLeft="1dp"
                 android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
                 android:contentDescription="@string/a"
                 android:scaleType="centerCrop"
                 android:src="@drawable/thumb_a" />
@@ -30,44 +36,95 @@
             <com.appt8.android.apps.funkids.TouchHighlightImageButton
                 android:id="@+id/thumb_b"
                 android:layout_width="100dp"
-                android:layout_height="75dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
                 android:contentDescription="@string/b"
                 android:scaleType="centerCrop"
-                android:src="@drawable/b" />
-
-            <!--
+                android:src="@drawable/thumb_b" />
+            
              <com.appt8.android.apps.funkids.TouchHighlightImageButton
-	             android:id="@+id/thumb_surprise"
-	             android:layout_width="100dp"
-	             android:layout_height="75dp"
-	             android:src="@drawable/thumb_surprise"
-	             android:scaleType="centerCrop"
-	             android:contentDescription="@string/surprise_pic" />
-	         <com.appt8.android.apps.funkids.TouchHighlightImageButton
-	             android:id="@+id/thumb_kids1"
-	             android:layout_width="100dp"
-	             android:layout_height="75dp"
-	             android:layout_marginRight="1dp"
-	             android:src="@drawable/thumb_kids"
-	             android:scaleType="centerCrop"
-	             android:contentDescription="@string/our_kids" />
-	
-	         <com.appt8.android.apps.funkids.TouchHighlightImageButton
-	             android:id="@+id/thumb_us1"
-	             android:layout_width="100dp"
-	             android:layout_height="75dp"
-	             android:src="@drawable/thumb_us"
-	             android:scaleType="centerCrop"
-	             android:contentDescription="@string/husbend_wife" />
-	         
-	         <com.appt8.android.apps.funkids.TouchHighlightImageButton
-	             android:id="@+id/thumb_surprise1"
-	             android:layout_width="100dp"
-	             android:layout_height="75dp"
-	             android:src="@drawable/thumb_surprise"
-	             android:scaleType="centerCrop"
-	             android:contentDescription="@string/surprise_pic" />
-            -->
+	            android:id="@+id/thumb_c"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/c"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_c" />
+            
+            <com.appt8.android.apps.funkids.TouchHighlightImageButton
+                android:id="@+id/thumb_d"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/d"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_d" />
+
+            <com.appt8.android.apps.funkids.TouchHighlightImageButton
+                android:id="@+id/thumb_e"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/e"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_e" />
+
+            
+             <com.appt8.android.apps.funkids.TouchHighlightImageButton
+	             android:id="@+id/thumb_f"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/f"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_f" />
+             
+	        
+            <com.appt8.android.apps.funkids.TouchHighlightImageButton
+                android:id="@+id/thumb_g"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/g"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_g" />
+
+            <com.appt8.android.apps.funkids.TouchHighlightImageButton
+                android:id="@+id/thumb_h"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/h"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_h" />
+
+            
+             <com.appt8.android.apps.funkids.TouchHighlightImageButton
+	             android:id="@+id/thumb_i"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/i"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_i" />
+
+             <com.appt8.android.apps.funkids.TouchHighlightImageButton
+	             android:id="@+id/thumb_j"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="1dp"
+                android:layout_marginBottom="1dp"
+                android:contentDescription="@string/j"
+                android:scaleType="centerCrop"
+                android:src="@drawable/thumb_j" />             
         </LinearLayout>
     </HorizontalScrollView>
 
@@ -75,8 +132,14 @@
         android:id="@+id/expanded_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/description_zoom_touch_close" 
-        android:visibility="invisible" />
+        android:layout_marginTop="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        android:contentDescription="@string/description_zoom_touch_close"
+        android:scaleType="fitXY" 
+        android:visibility="invisible"/>
+
     <!--
           <TextView
          android:id="@+id/expanded_description"

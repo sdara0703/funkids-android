@@ -41,7 +41,7 @@
         </activity>
         <activity
             android:name="com.appt8.android.apps.funkids.AlphabetsActivity"
-            android:label="@string/title_activity_thumb"
+            android:label="@string/title_activity_alphabets"
             android:parentActivityName="com.appt8.android.apps.funkids.MainActivity" >
         </activity>
         <activity

@@ -62,7 +62,7 @@ public class AlphabetsActivity extends ActionBarActivity {
     private int mShortAnimationDuration;
    // private TextView tv = null;
     private MediaPlayer mp = null;
-    private Utilities utilities = new Utilities();
+    private Util util = new Util();
 
     BitmapDrawable bd;
     Bitmap resizedBitmap;
@@ -81,53 +81,86 @@ public class AlphabetsActivity extends ActionBarActivity {
 
         // Hook up clicks on the thumbnail views.
        // tv = (TextView) this.findViewById(R.id.expanded_description);
-        final View thumb1View = findViewById(R.id.thumb_a);
-        thumb1View.setOnClickListener(new View.OnClickListener() {
+        final View thumbAView = findViewById(R.id.thumb_a);
+        thumbAView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zoomImageFromThumb(thumb1View, R.drawable.a);
+                zoomImageFromThumb(thumbAView, R.drawable.a);
             	
             }
         });
 
-        final View thumb2View = findViewById(R.id.thumb_b);
-        thumb2View.setOnClickListener(new View.OnClickListener() {
+        final View thumbBView = findViewById(R.id.thumb_b);
+        thumbBView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zoomImageFromThumb(thumb2View, R.drawable.b);
+                zoomImageFromThumb(thumbBView, R.drawable.b);
             }
         });
         
-        /*final View thumb3View = findViewById(R.id.thumb_surprise);
-        thumb3View.setOnClickListener(new View.OnClickListener() {
+        final View thumbCView = findViewById(R.id.thumb_c);
+        thumbCView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zoomImageFromThumb(thumb3View, R.drawable.surprise);
-            }
-        });
-        final View thumb4View = findViewById(R.id.thumb_kids1);
-        thumb4View.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                zoomImageFromThumb(thumb4View, R.drawable.kids);
-            }
-        });
-
-        final View thumb5View = findViewById(R.id.thumb_us1);
-        thumb5View.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                zoomImageFromThumb(thumb5View, R.drawable.us);
+                zoomImageFromThumb(thumbCView, R.drawable.c);
             }
         });
         
-        final View thumb6View = findViewById(R.id.thumb_surprise1);
-        thumb6View.setOnClickListener(new View.OnClickListener() {
+        final View thumbDView = findViewById(R.id.thumb_d);
+        thumbDView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                zoomImageFromThumb(thumb6View, R.drawable.surprise);
+                zoomImageFromThumb(thumbDView, R.drawable.d);
             }
-        });*/
+        });
+        
+        final View thumbEView = findViewById(R.id.thumb_e);
+        thumbEView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zoomImageFromThumb(thumbEView, R.drawable.e);
+            }
+        });
+        
+        final View thumbFView = findViewById(R.id.thumb_f);
+        thumbFView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zoomImageFromThumb(thumbFView, R.drawable.f);
+            }
+        });
+        
+        final View thumbGView = findViewById(R.id.thumb_g);
+        thumbGView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zoomImageFromThumb(thumbGView, R.drawable.g);
+            }
+        });
+        
+        final View thumbHView = findViewById(R.id.thumb_h);
+        thumbHView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zoomImageFromThumb(thumbHView, R.drawable.h);
+            }
+        });
+        
+        final View thumbIView = findViewById(R.id.thumb_i);
+        thumbIView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zoomImageFromThumb(thumbIView, R.drawable.i);
+            }
+        });
+        
+        final View thumbJView = findViewById(R.id.thumb_j);
+        thumbJView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                zoomImageFromThumb(thumbJView, R.drawable.j);
+            }
+        });
         // Retrieve and cache the system's default "short" animation time.
         mShortAnimationDuration = getResources().getInteger(android.R.integer.config_shortAnimTime);
     }
@@ -203,9 +236,10 @@ public class AlphabetsActivity extends ActionBarActivity {
     	 		Log.i("zoomImageFromThumb", "BitmapDrawable is NULL");
     	 	}
     	 	else {
-			        resizedBitmap = utilities.getWindowSizedBitmap(bd.getBitmap(), display);
+			        resizedBitmap = util.getWindowSizedBitmap(bd.getBitmap(), display);
 			        if (resizedBitmap != null) {
 			        	Log.i("zoomImageFromThumb", "resizedBitmap is not null");
+			        	Log.i("zoomImageFromThumb", "Resized image pixels - Width:" + resizedBitmap.getWidth() + ",Height:" + resizedBitmap.getHeight());
 			        	expandedImageView.setImageBitmap(resizedBitmap);
 			        }
 		        }
@@ -253,16 +287,11 @@ public class AlphabetsActivity extends ActionBarActivity {
 
         // Hide the thumb nail and show the zoomed-in view. When the animation begins,
         // it will position the zoomed-in view in the place of the thumb nail.
-        thumbView.setAlpha(0f);
+        //thumbView.setAlpha(0f); //Uncomment to show hide thumb view on click
         expandedImageView.setVisibility(View.VISIBLE);
         
         //SOUND
         //utilities.playMedia(AlphabetsActivity.this, R.raw.thumb_click);
-        
-        
-       /* mp = MediaPlayer.create(AlphabetsActivity.this, R.raw.thumb_click);  
-        mp.start();*/
-        //mp.release();
         
         // Set the pivot point for SCALE_X and SCALE_Y transformations to the top-left corner of
         // the zoomed-in view (the default is the center of the view).
@@ -271,12 +300,19 @@ public class AlphabetsActivity extends ActionBarActivity {
 
         // Construct and run the parallel animation of the four translation and scale properties
         // (X, Y, SCALE_X, and SCALE_Y).
+        
+        
+        //Display height of thumb image
+        Log.i("Animation", "Thumb image width:" + thumbView.getWidth() + ", height:" + thumbView.getHeight());
+        
+        
+        
         AnimatorSet set = new AnimatorSet();
         set
                 .play(ObjectAnimator.ofFloat(expandedImageView, View.X, startBounds.left,
                         finalBounds.left))
-                .with(ObjectAnimator.ofFloat(expandedImageView, View.Y, startBounds.top,
-                        finalBounds.top))
+                .with(ObjectAnimator.ofFloat(expandedImageView, View.Y, startBounds.top+thumbView.getHeight()+5,
+                        finalBounds.top+thumbView.getHeight()+5))
                 .with(ObjectAnimator.ofFloat(expandedImageView, View.SCALE_X, startScale, 1f))
                 .with(ObjectAnimator.ofFloat(expandedImageView, View.SCALE_Y, startScale, 1f));
         set.setDuration(mShortAnimationDuration);
@@ -323,14 +359,14 @@ public class AlphabetsActivity extends ActionBarActivity {
                 set.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        thumbView.setAlpha(1f);
+                        thumbView.setAlpha(1f); //Change to 1 to transparent
                         expandedImageView.setVisibility(View.GONE);                        
                         mCurrentAnimator = null;
                     }
 
                     @Override
                     public void onAnimationCancel(Animator animation) {
-                        thumbView.setAlpha(1f);
+                        thumbView.setAlpha(1f); //Change to 1 to transparent
                         expandedImageView.setVisibility(View.GONE);
                         mCurrentAnimator = null;
                     }

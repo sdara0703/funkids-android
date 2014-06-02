@@ -36,7 +36,7 @@ public class DisplayMessageActivity extends ActionBarActivity {
         public void onDraw(Canvas canvas) {
              super.onDraw(canvas);
                           
-             Bitmap mypic = BitmapFactory.decodeResource(getResources(),R.drawable.a);
+             //Bitmap mypic = BitmapFactory.decodeResource(getResources(),R.drawable.a);
              //Bitmap resizedPic = getResizedBitmap(mypic,1000,1296);
              //message = mypic.getWidth() + ":" + mypic.getHeight() + "," + resizedPic.getWidth() + ":" + resizedPic.getHeight();
              
@@ -44,12 +44,12 @@ public class DisplayMessageActivity extends ActionBarActivity {
              //Original Image Dimensions -   Width 1936 Height 1296             	
              //Resized image dimensions  -   Width 1000 Height 1296
              
-             canvas.drawBitmap(mypic,20,20,null);
+            /* canvas.drawBitmap(mypic,20,20,null);
              paint.setTextSize(44);
-             paint.setColor(Color.GREEN);
+             paint.setColor(Color.GREEN);*/
              Intent intent = getIntent();
              message = intent.getStringExtra(MainActivity.MY_MESSAGE);          
-             canvas.drawText("Welcome " + message + "...!!!", 50, 1200, paint);
+             canvas.drawText("Welcome " + message + "...!!!", 50, 500, paint);
              
         }
 	}

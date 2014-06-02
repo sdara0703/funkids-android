@@ -23,7 +23,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 /**
  * An image button that uses a blue highlight (@link android.R.attr.selectableItemBackground} to

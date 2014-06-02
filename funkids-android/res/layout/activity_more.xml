@@ -10,10 +10,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="@string/more"
-        android:textSize="20sp" />
+        android:text="@string/courtesy_message"
+        android:textColor="#00FFFF"
+        android:textSize="12sp" />
 
-    <CheckBox
+    <!-- CheckBox
         android:id="@+id/checkBox1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,6 +32,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="19dp"
         android:text="@string/settings"
-        android:textSize="@dimen/abc_action_bar_title_text_size" />
+        android:textSize="@dimen/abc_action_bar_title_text_size" /-->
 
 </RelativeLayout>
