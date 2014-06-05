@@ -4,12 +4,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.opengl.Matrix;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
+import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.os.Build;
 
@@ -20,11 +25,25 @@ public class MoreActivity extends ActionBarActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_more);
 
+		
+		//Rotate logo
+/*		RotateAnimation anim = new RotateAnimation(0f,  350f, 15f, 15f);
+		anim.setInterpolator(new LinearInterpolator());
+		anim.setRepeatCount(Animation.INFINITE);
+		anim.setDuration(700);
+		
+		final ImageView splash = (ImageView) findViewById(R.id.more_logo);
+		splash.startAnimation(anim);*/
+		//splash.setAnimation(null);
+		
+		
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,6 +78,8 @@ public class MoreActivity extends ActionBarActivity {
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
 			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+			Intent intent = new Intent(this, RhymesActivity.class);
+			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
 			//Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();

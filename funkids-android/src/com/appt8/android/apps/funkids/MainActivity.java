@@ -152,7 +152,10 @@ public class MainActivity extends ActionBarActivity {
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
-			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, RhymesActivity.class);
+			startActivity(intent);
+			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
 			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
 			//Intent intent = new Intent(this, DisplayAddressActivity.class);

@@ -28,15 +28,15 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_marginTop="2dp"
-	            android:orientation="horizontal">	    				
-
+	            android:orientation="horizontal">
+			    
 		        <com.appt8.android.apps.funkids.TouchHighlightImageButton
 		            android:id="@+id/number1"
 		            android:layout_width="319dp"
 		            android:layout_height="wrap_content"
 		            android:layout_marginLeft="1dp"
 		            android:layout_marginRight="1dp"
-		            android:contentDescription="@string/one"
+		            android:contentDescription="@string/one"		            
 		            android:onClick="ImageClicked"
 		            android:scaleType="fitXY"
 		            android:src="@drawable/one" />
@@ -51,7 +51,7 @@
 	                android:src="@drawable/two"
 	                android:contentDescription="@string/two" 
 	                android:onClick="ImageClicked" />
-	            
+	           
 	            <com.appt8.android.apps.funkids.TouchHighlightImageButton
 	                android:id="@+id/number3"
 	                android:layout_width="320dp"
@@ -138,21 +138,20 @@
 	                android:layout_marginRight="1dp"
 	                android:src="@drawable/ten"
 	                android:contentDescription="@string/ten" 
-	                android:onClick="ImageClicked" />	                           		        
+	                android:onClick="ImageClicked" />
+	                                    		        
 	             </LinearLayout>
 			</HorizontalScrollView>
 
-<TextView
-    android:id="@+id/scroller"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#000000"
-    android:ellipsize="marquee"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:singleLine="true"
-    android:text="@string/marquee_number_text"
-    android:textAppearance="?android:attr/textAppearanceLarge"
-    android:textColor="#FF0000" />
+    <WebView 
+		    android:id="@+id/web_content_numbers"
+		    android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+    		android:textColor="#FF0000"
+            android:scrollbars="vertical"
+            android:textSize="16sp"
+		    />
 
 </FrameLayout>

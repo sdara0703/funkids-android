@@ -4,32 +4,36 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.Fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.media.MediaPlayer;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class NumbersActivity extends ActionBarActivity {
-	MediaPlayer mp = null;
 	CharSequence message = "";
 	Util util;
 	TextView txtView;
+	WebView webView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_numbers);
-		txtView=(TextView) findViewById(R.id.scroller);
-		txtView.setSelected(true);
+		//txtView=(TextView) findViewById(R.id.scroller);
+		//txtView.setSelected(true);
 		
-		
-		
-		
+		webView = (WebView) findViewById(R.id.web_content_numbers);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setBackgroundColor(Color.TRANSPARENT);
+        webView.loadData(getString(R.string.marquee_number_text), "text/html", "utf-8");
+        //webView.loadData("<html><body><marquee>Ba Ba Black Sheep</marquee></body></html>", "text/html", "utf-8");
+
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -65,6 +69,9 @@ public class NumbersActivity extends ActionBarActivity {
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
 			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+			Intent intent = new Intent(this, RhymesActivity.class);
+			startActivity(intent);
+			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
 			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, MoreActivity.class);
@@ -93,24 +100,8 @@ public class NumbersActivity extends ActionBarActivity {
 		
 	public void ImageClicked(View view) {
 		
+		webView.loadData("<html><body><marquee>" + (String) view.getContentDescription() + "</marquee></body></html>", "text/html", "utf-8");
 		util = new Util();
 		util.playMedia(view.getContext(), R.raw.thumb_click);
-/*		this.message=view.getContentDescription();
-	   	Runnable runnable = new Runnable() {
-	        public void run() {
-	        		        	
-	        	Message msg = handler.obtainMessage();
-    			Bundle bundle = new Bundle();
-    			SimpleDateFormat dateformat = 
-                             new SimpleDateFormat("HH:mm:ss MM/dd/yyyy", Locale.US);
-    			String dateString = dateformat.format(new Date());
-    			bundle.putString("myKey", dateString);
-                 msg.setData(bundle);
-                 handler.sendMessage(msg);	
-	        }
-	   	};
-	        
-      Thread mythread = new Thread(runnable);
-      mythread.start();*/
 	}
 }

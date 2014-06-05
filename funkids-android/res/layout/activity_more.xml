@@ -11,8 +11,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:text="@string/courtesy_message"
-        android:textColor="#00FFFF"
-        android:textSize="12sp" />
+        android:textColor="#BF2828"
+        android:textSize="16sp" />
+
 
     <!-- CheckBox
         android:id="@+id/checkBox1"
@@ -33,5 +34,15 @@
         android:layout_marginTop="19dp"
         android:text="@string/settings"
         android:textSize="@dimen/abc_action_bar_title_text_size" /-->
+
+    <ImageView
+        android:id="@+id/more_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/label_lat_lng"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="166dp"
+        android:src="@drawable/ic_launcher"
+        android:contentDescription="@string/welcome" />
 
 </RelativeLayout>
