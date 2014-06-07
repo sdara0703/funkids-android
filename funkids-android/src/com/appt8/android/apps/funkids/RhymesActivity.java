@@ -20,6 +20,8 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
@@ -27,6 +29,12 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 /**
  * Demonstrates a "screen-slide" animation using a {@link ViewPager}. Because {@link ViewPager}
@@ -39,7 +47,7 @@ import android.view.MenuItem;
  *
  * @see ScreenSlidePageFragment
  */
-public class RhymesActivity extends FragmentActivity {
+public class RhymesActivity extends FragmentActivity  {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
@@ -56,6 +64,7 @@ public class RhymesActivity extends FragmentActivity {
      */
     private PagerAdapter mPagerAdapter;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

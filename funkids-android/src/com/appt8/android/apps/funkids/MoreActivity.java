@@ -4,6 +4,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.opengl.Matrix;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,16 +16,19 @@ import android.view.animation.Animation;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 import android.os.Build;
 
 public class MoreActivity extends ActionBarActivity {
-
+	private RelativeLayout layout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_more);
 
+		layout = (RelativeLayout) findViewById(R.id.container);
+		layout.setBackgroundColor(Color.BLACK);
 		
 		//Rotate logo
 /*		RotateAnimation anim = new RotateAnimation(0f,  350f, 15f, 15f);
@@ -67,18 +71,18 @@ public class MoreActivity extends ActionBarActivity {
 			startActivity(intent);
 
 		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
-			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
+			//Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, AlphabetsActivity.class);
 			startActivity(intent);
 			//this.recreate();
 		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
-			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();	
+			//Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();	
 			Intent intent = new Intent(this, NumbersActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
-			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
-			Intent intent = new Intent(this, RhymesActivity.class);
+			//Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
+			Intent intent = new Intent(this, DisplayRhymesActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {

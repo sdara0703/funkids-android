@@ -18,14 +18,16 @@ package com.appt8.android.apps.funkids;
 
 import android.app.Fragment;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A fragment representing a single step in a wizard. The fragment shows a dummy title indicating
@@ -44,9 +46,8 @@ public class RhymesPageFragment extends Fragment {
      * The fragment's page number, which is set to the argument value for {@link #ARG_PAGE}.
      */
     private int mPageNumber;
-
-    TextView txtContent;
-    
+    WebView webView;
+    Util util;
     /**
      * Factory method for this fragment class. Constructs a new fragment for the given page number.
      */
@@ -65,7 +66,8 @@ public class RhymesPageFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPageNumber = getArguments().getInt(ARG_PAGE);             
+        mPageNumber = getArguments().getInt(ARG_PAGE);        
+        
     }
 
     @Override
@@ -74,36 +76,47 @@ public class RhymesPageFragment extends Fragment {
         // Inflate the layout containing a title and body text.
         ViewGroup rootView = (ViewGroup) inflater
                 .inflate(R.layout.fragment_rhymes, container, false);
+        
 
-        // Set the title view to show the page number.
-        //txtContent = (TextView) rootView.findViewById(R.id.rhymes_content);
-        //txtContent.setText(Html.fromHtml(getString(R.string.rhymes_index, mPageNumber + 1)));
-        //txtContent.setMovementMethod(new ScrollingMovementMethod());       
-        WebView webView = (WebView) rootView.findViewById(R.id.web_content);
+        util = new Util();
+        //Drawable drwawable = (Drawable) rootView.findViewById(R.drawable.moon);
+        
+        webView = (WebView) rootView.findViewById(R.id.web_content);
+        webView.setBackgroundColor(Color.TRANSPARENT);
         webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadData(getString(R.string.rhymes_index, mPageNumber + 1), "text/html", "utf-8");
         
-        
+        webView.loadData(getString(R.string.rhymes_index1), "text/html", "utf-8");
+   	
+    	//Toast.makeText(rootView.getContext(), "Index", Toast.LENGTH_SHORT).show();
+    	    	
         switch(mPageNumber) {
+        case 0:
+        	
+        	//webView.loadData(getString(R.string.rhyme_baba, mPageNumber + 1), "text/html", "utf-8");
+        	//Toast.makeText(rootView.getContext(), "baba", Toast.LENGTH_SHORT).show();
+        	break;   
         case 1:
-        	webView.loadData(getString(R.string.rhymes_content_1, mPageNumber + 1), "text/html", "utf-8");
-        	break;        	
+        	webView.loadData(getString(R.string.rhyme_baba), "text/html", "utf-8");
+        	Toast.makeText(rootView.getContext(), "baba", Toast.LENGTH_SHORT).show();
+        	break;   
         case 2:
-        	webView.loadData(getString(R.string.rhymes_content_2, mPageNumber + 1), "text/html", "utf-8");
+        	webView.loadData(getString(R.string.rhyme_london), "text/html", "utf-8");
+        	Toast.makeText(rootView.getContext(), "London", Toast.LENGTH_SHORT).show();
         	break;
         case 3:
-        	webView.loadData(getString(R.string.rhymes_content_3, mPageNumber + 1), "text/html", "utf-8");
-        	//txtContent.setText(Html.fromHtml(getString(R.string.rhymes_content_3, mPageNumber + 1)));
-        	//txtContent.setBackgroundColor(Color.parseColor("#FFA340"));
+        	//webView.setBackground(getResources().getDrawable(R.drawable.moon));
+        	webView.loadData(getString(R.string.rhyme_if_you_are_happy), "text/html", "utf-8");
+        	Toast.makeText(rootView.getContext(), "if you are", Toast.LENGTH_SHORT).show();
         	break;
         case 4:
-        	webView.loadData(getString(R.string.rhymes_content_4, mPageNumber + 1), "text/html", "utf-8");
-        	//txtContent.setText(Html.fromHtml(getString(R.string.rhymes_content_3, mPageNumber + 1)));
-        	//txtContent.setBackgroundColor(Color.parseColor("#FFA340"));
-        	break;        	
+        	//webView.setBackground(getResources().getDrawable(R.drawable.moon));
+        	webView.loadData(getString(R.string.rhyme_twinkle), "text/html", "utf-8");
+        	Toast.makeText(rootView.getContext(), "Twinkle", Toast.LENGTH_SHORT).show();
+        	break; 
         }
         return rootView;
     }
+
 
     /**
      * Returns the page number represented by this fragment object.

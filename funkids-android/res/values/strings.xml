@@ -50,24 +50,27 @@
     <string name="eight">Eight</string>
     <string name="nine">Nine</string>
     <string name="ten">Ten</string>
-    <string name="marquee_number_text"><![CDATA[
+    <string name="marquee_number_text">
+<![CDATA[
         <html><body><marquee>ONE   TWO   THREE   FOUR   FIVE   SIX   SEVEN   EIGHT   NINE   TEN</marquee></body></html>
-        ]]></string>
-    
-    
+        ]]>
+    </string>
+
     <!-- Rhymes -->
     <string name="title_activity_rhymes">Rhymes...</string>
     <string name="action_previous">Previous</string>
     <string name="action_next">Next</string>
     <string name="action_finish">Finish</string>
     <string name="title_template_step"><xliff:g id="step_number">%1$d</xliff:g></string>
-    <string name="rhymes_index1"><![CDATA[
+    <string name="rhymes_index1">
+<![CDATA[
        <html><body><marquee>Ba Ba Black Sheep</marquee></body></html>
 		
 
-    ]]></string>
-    
-    <string name="rhymes_index"><![CDATA[
+    ]]>
+    </string>
+    <string name="rhymes_index12">
+<![CDATA[
         <font size="6" color="#0000FF"><tt><u>Ba Ba Black Sheep</u></tt></font><br><br>
 		<font size="6" color="#FF7400"><tt><u>London Bridge</u></tt></font><br><br>
 		<font size="6" color="#BF3330"><tt><u>If You Are Happy</u></tt></font><br><br>
@@ -77,13 +80,17 @@
 		<font size="6" color="#FF7283"><tt><u>Twinkle Twinkle</u></tt></font><br><br>
 		<font size="6" color="#BF3330"><tt><u>If You Are Happy</u></tt></font><br><br>
 
-    ]]></string>
-     		<!-- <font color="#FF7283"><tt><u><h5>Twinkle Twinkle</h5></u></tt></font><br>
+    ]]>
+    </string>
+    <!--
+        <font color="#FF7283"><tt><u><h5>Twinkle Twinkle</h5></u></tt></font><br>
 		<font color="#BF3330"><tt><u><h6>If You Are Happy</h6></u></tt></font><br>
 		<font size="1" color="#BF3330"><tt><u>Size 1</u></tt></font><br>
 		<font size="5" color="#BF3330"><tt><u>Size 5</u></tt></font><br>
-		<font size="9" color="#BF3330"><tt><u>Size 9</u></tt></font><br> -->
-    <string name="rhymes_content_1"><![CDATA[
+		<font size="9" color="#BF3330"><tt><u>Size 9</u></tt></font><br>
+    -->
+    <string name="rhyme_baba_html">
+<![CDATA[
        	<font size="6" color="#0000FF"><tt><u><center>Ba Ba Black Sheep</center></u></font><br><br>	
         <font size="4" color="#0000FF"><tt>
 			Ba Ba Black Sheep<br><br>
@@ -95,8 +102,77 @@
 			One 1 for the little boy,<br><br>
 			Who cries in the lane.</tt>
 		</font><br><br>
-	]]></string>
-    <string name="rhymes_content_2"><![CDATA[
+	]]>
+    </string>
+    <string name="rhyme_baba_title">
+        Ba Ba Black Sheep...
+    </string>
+    <string name="rhyme_baba">
+        	Ba Ba Black Sheep\n\n
+			Ba Ba Black Sheep\n\n
+			Have you any wool?\n\n
+			Yes sir, yes sir,\n\n
+			Three 3 bags full.\n\n
+			One 1 for my master.\n\n
+			One 1 for my dame.\n\n
+			One 1 for the little boy,\n\n
+			Who cries in the lane.\n\n
+		    </string>
+	<string name="rhyme_london_title">
+	    London Bridge Is...
+	</string>
+	<string name="rhyme_london">	  
+		London Bridge is broken down,\n\n
+		Broken down, broken down.\n\n
+		London Bridge is broken down,\n\n
+		My fair lady.\n\n
+		Build it up with wood and clay,\n\n
+		Wood and clay, wood and clay,\n\n
+		Build it up with wood and clay,\n\n
+		My fair lady.\n\n
+		Wood and clay will wash away,\n\n
+		Wash away, wash away,\n\n
+		Wood and clay will wash away,\n\n
+		My fair lady.\n\n
+		Build it up with bricks and mortar,\n\n
+		Bricks and mortar, bricks and mortar,\n\n
+		Build it up with bricks and mortar,\n\n
+		My fair lady.\n\n
+		Bricks and mortar will not stay,\n\n
+		Will not stay, will not stay,\n\n
+		Bricks and mortar will not stay,\n\n
+		My fair lady.\n\n
+		Build it up with iron and steel,\n\n
+		Iron and steel, iron and steel,\n\n
+		Build it up with iron and steel,\n\n
+		My fair lady.\n\n
+		Iron and steel will bend and bow,\n\n
+		Bend and bow, bend and bow,\n\n
+		Iron and steel will bend and bow,\n\n
+		My fair lady.\n\n
+		Build it up with silver and gold,\n\n
+		Silver and gold, silver and gold,\n\n
+		Build it up with silver and gold,\n\n
+		My fair lady.\n\n
+		Silver and gold will be stolen away,\n\n
+		Stolen away, stolen away,\n\n
+		Silver and gold will be stolen away,\n\n
+		My fair lady.\n\n
+		Set a man to watch all night,\n\n
+		Watch all night, watch all night,\n\n
+		Set a man to watch all night,\n\n
+		My fair lady.\n\n		
+		Suppose the man should fall asleep,\n\n
+		Fall asleep, fall asleep,\n\n
+		Suppose the man should fall asleep?\n\n
+		My fair lady.\n\n	
+		Give him a pipe to smoke all night,\n\n
+		Smoke all night, smoke all night,\n\n
+		Give him a pipe to smoke all night,\n\n
+		My fair lady.\n\n
+	</string>
+    <string name="rhyme_london_html">
+<![CDATA[
        <HTML>
 	<font size="6" color="#FF7400"><tt><u><center>London Bridge is broken down</center></u>
 	</font><br><br>	
@@ -175,9 +251,10 @@
 		</tt>
 </HTML>
        
-]]></string>
-
-<string name="rhymes_content_3"><![CDATA[
+]]>
+    </string>
+    <string name="rhyme_if_you_are_happy_html">
+<![CDATA[
 <HTML>
 	<font size="6" color="#BF3330"><tt><u><center>If you are happy and you know it</center></u>
 	</font><br><br>	
@@ -236,9 +313,61 @@
 		</tt>
 </HTML>
 
-]]></string>
-    
-    <string name="rhymes_content_4"><![CDATA[
+]]>
+    </string>
+    <string name="rhyme_if_you_are_happy_title">
+        If You Are Happy...
+    </string>
+    <string name="rhyme_if_you_are_happy">
+        
+		If you are happy and you know it,\n\n
+		Clap your hands.\n\n
+		Clap! Clap!\n\n
+		If you are happy and you know it,\n\n
+		Clap your hands.\n\n
+		Clap! Clap!\n\n
+		If you are happy and you know it,\n\n
+		Then your face will surely show it.\n\n
+		If you are happy and you know it,\n\n
+		Clap your hands.\n\n
+		Clap! Clap!\n\n
+
+		If you are happy and you know it,\n\n
+		stomp your feet.\n\n
+		stomp!stomp!\n\n
+		If you are happy and you know it,\n\n
+		stomp your feet.\n\n
+		stomp!stomp!\n\n
+
+		If you are happy and you know it,\n\n
+		Shout "hurray!"\n\n
+		hurray!\n\n
+		If you are happy and you know it,\n\n
+		Shout "hurray!"\n\n
+		hurray!\n\n
+
+		If you are happy and you know it,\n\n
+		Then you are face will surely show it.\n\n
+		If you are happy and you know it,\n\n
+		Shout "hurray!"\n\n
+		hurray!\n\n
+
+		If you are happy and you know it,\n\n
+		Do all three\n\n
+		Clap!stomp!hurray!\n\n
+		If you are happy and you know it,\n\n
+		Do all three\n\n
+		Clap!stomp!hurray!\n\n
+		If you are happy and you know it,\n\n
+		Then your face will surely show it.\n\n
+
+		If you are happy and you know it,\n\n
+		Do all three\n\n
+		Clap!stomp!hurray!\n\n
+        
+    </string>
+    <string name="rhyme_twinkle_html">
+<![CDATA[
        <HTML>
 	<font size="6" color="#FF7283"><tt><u><center>Twinkle Twinkle Little Star</center></u>
 	</font><br><br>	
@@ -262,8 +391,45 @@
 	</FONT>
 		</tt>
 </HTML>
-        ]]></string>    
+        ]]>
+    </string>
+
+    <string name="rhyme_twinkle_title">
+        Twinkle Twinkle...
+    </string>
         
+    <string name="rhyme_twinkle">
+        Twinkle, twinkle, little star, \n\n
+		How I wonder what you are. \n\n
+		Up above the world so high,\n\n 
+		Like a diamond in the sky. \n\n
+
+		Twinkle, twinkle, little star. \n\n
+		How I wonder what you are. \n\n
+		Up above the world so high, \n\n
+		Like a diamond in the sky. \n\n
+		
+		Twinkle, twinkle, little star. \n\n
+		How I wonder what you are. \n\n
+    </string>
+    <!-- Display Rhymes -->         
+    
+    <string-array name="rhymes_array">
+        <item>Ba Ba Black Sheep</item>
+        <item>London Bridge</item>
+        <item>If You Are Happy</item>
+        <item>Twinkle Twinkle</item>
+
+    </string-array>
+ 
+    <string name="rhyme_index">
+         Ba Ba Black Sheep\nLondon Bridge\nIf You Are Happy\nTwinkle Twinkle
+		</string>
+		
+ 
+ 
+   <string name="now_playing">Now Playing:</string>
+   <string name="inital_Time">0 min, 0 sec</string>
     <!-- My address -->
     <!-- Application identifiers -->
 
@@ -320,6 +486,7 @@
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_more">Courtesy</string>
-    
+    <string name="title_activity_display_rhymes">DisplayRhymesActivity</string>
 
+    
 </resources>

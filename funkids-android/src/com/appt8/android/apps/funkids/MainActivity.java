@@ -141,23 +141,23 @@ public class MainActivity extends ActionBarActivity {
 		if (item.getTitle().toString().equals(getString(R.string.home_tab))) {	
 			//this.recreate();	
 		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
-			Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
+			//Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
 			//Intent intent = new Intent(this, ThumbActivity.class);
 			Intent intent = new Intent(this, AlphabetsActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
-			Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();
+			//Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, NumbersActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
-			Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();
-			Intent intent = new Intent(this, RhymesActivity.class);
+			//Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();
+			Intent intent = new Intent(this, DisplayRhymesActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
-			Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
+			//Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
 			//Intent intent = new Intent(this, DisplayAddressActivity.class);
 			Intent intent = new Intent(this, MoreActivity.class);
 			startActivity(intent);
