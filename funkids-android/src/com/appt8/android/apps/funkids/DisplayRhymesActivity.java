@@ -1,4 +1,5 @@
 package com.appt8.android.apps.funkids;
+
 import java.util.concurrent.TimeUnit;
 
 import android.graphics.Color;
@@ -12,34 +13,32 @@ import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
-import android.view.Menu;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 public class DisplayRhymesActivity extends Activity implements OnItemSelectedListener {	
-  
+	    
    public TextView startTimeField,endTimeField,rhyme_title,rhyme_content;
-   private MediaPlayer mediaPlayer;
-   private double startTime = 0;
-   private double finalTime = 0;
-   private Handler myHandler = new Handler();;
-   private int forwardTime = 5000; 
-   private int backwardTime = 5000;
-   private SeekBar seekbar;
-   private ImageButton playButton,pauseButton;
+   public MediaPlayer mediaPlayer;
+   public double startTime = 0;
+   public double finalTime = 0;
+   private Handler myHandler = new Handler();
+   public int forwardTime = 5000; 
+   public int backwardTime = 5000;
+   public SeekBar seekbar;
+   public ImageButton playButton,pauseButton;
    public static int oneTimeOnly = 0;   
+   
    
    @Override
    protected void onCreate(Bundle savedInstanceState) {
@@ -97,43 +96,65 @@ public class DisplayRhymesActivity extends Activity implements OnItemSelectedLis
 		   oneTimeOnly = 1;
 	   } 
 	   endTimeField.setText(String.format("%d min, %d sec", 
-		         TimeUnit.MILLISECONDS.toMinutes((long) finalTime),
-		         TimeUnit.MILLISECONDS.toSeconds((long) finalTime) - 
-		         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
-		         toMinutes((long) finalTime)))
-		      );
-		      startTimeField.setText(String.format("%d min, %d sec", 
-		         TimeUnit.MILLISECONDS.toMinutes((long) startTime),
-		         TimeUnit.MILLISECONDS.toSeconds((long) startTime) - 
-		         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
-		         toMinutes((long) startTime)))
-		      );
-		      seekbar.setProgress((int)startTime);
-		      myHandler.postDelayed(UpdateSongTime,100);
-		      pauseButton.setEnabled(true);
-		      playButton.setEnabled(false);
+	         TimeUnit.MILLISECONDS.toMinutes((long) finalTime),
+	         TimeUnit.MILLISECONDS.toSeconds((long) finalTime) - 
+	         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
+	         toMinutes((long) finalTime)))
+	      );
+	      startTimeField.setText(String.format("%d min, %d sec", 
+	         TimeUnit.MILLISECONDS.toMinutes((long) startTime),
+	         TimeUnit.MILLISECONDS.toSeconds((long) startTime) - 
+	         TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
+	         toMinutes((long) startTime)))
+	      );
+	      seekbar.setProgress((int)startTime);
+	      myHandler.postDelayed(UpdateSongTime,1000);
+		 
+	      pauseButton.setEnabled(true);
+	      playButton.setEnabled(false);
+	      
+	      mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+	          public void onCompletion(MediaPlayer mp1) {	        	  
+	              //mp1.stop();
+	        	  pauseButton.setEnabled(false);
+	              playButton.setEnabled(true);
+	              oneTimeOnly = 0;
+	              startTime = 0;
+	          }
+	      });
 		      
-		      mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-		          public void onCompletion(MediaPlayer mp1) {
-		              mp1.stop();
-		              mp1.release();
-		          }
-		      });
 	}
    
-   private Runnable UpdateSongTime = new Runnable() {
-	      public void run() {
-	         startTime = mediaPlayer.getCurrentPosition();
-	         startTimeField.setText(String.format("%d min, %d sec", 
-	            TimeUnit.MILLISECONDS.toMinutes((long) startTime),
-	            TimeUnit.MILLISECONDS.toSeconds((long) startTime) - 
-	            TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
-	            toMinutes((long) startTime)))
-	         );
-	         seekbar.setProgress((int)startTime);
-	         myHandler.postDelayed(this, 100);
-	      }
-	   };
+   private Runnable UpdateSongTime = new Runnable()  {
+	   	public void run() {		   
+	   		//Do activity only if song is playing
+	   		if (pauseButton.isEnabled()) {
+		    	startTime = mediaPlayer.getCurrentPosition();
+		        startTimeField.setText(String.format("%d min, %d sec", 
+		        TimeUnit.MILLISECONDS.toMinutes((long) startTime),
+		        TimeUnit.MILLISECONDS.toSeconds((long) startTime) - 
+		        TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.
+		        toMinutes((long) startTime)))
+		        );
+		        seekbar.setProgress((int)startTime);
+	   		}
+	        myHandler.postDelayed(this, 1000);
+	   	}
+   };
+   
+   public void reset(View view) {
+	  if (mediaPlayer.isPlaying()) {
+		  mediaPlayer.stop();
+	  }
+	  pauseButton.setEnabled(false);
+      playButton.setEnabled(true);
+      startTimeField.setText(R.string.initial_Time);
+  	  endTimeField.setText(R.string.initial_Time);
+  	  //seekbar = (SeekBar)findViewById(R.id.seekBar1);
+      startTime = 0;
+      oneTimeOnly = 0;
+   }
+   
    public void pause(View view){
      /* Toast.makeText(getApplicationContext(), "Pausing sound", 
       Toast.LENGTH_SHORT).show();*/
@@ -148,9 +169,11 @@ public class DisplayRhymesActivity extends Activity implements OnItemSelectedLis
 	      Toast.LENGTH_SHORT).show();*/
 
 	      mediaPlayer.stop();
-	      mediaPlayer.release();
+	      //mediaPlayer.release();
 	      pauseButton.setEnabled(false);
 	      playButton.setEnabled(true);
+	      
+	      //threadPool.shutdown();
 	   }
    
     public void onItemSelected(AdapterView<?> parent, View view, 
@@ -158,14 +181,13 @@ public class DisplayRhymesActivity extends Activity implements OnItemSelectedLis
 /*    	
     	Toast.makeText(getApplicationContext(), "Item selected " + pos, 
     		      Toast.LENGTH_SHORT).show();*/
-    	stop(view);
+    	reset(view);
     	switch (pos) {
     	case 0:
     		rhyme_title.setText(R.string.rhyme_baba_title);
     		rhyme_content.setText(R.string.rhyme_baba);
     		rhyme_content.setBackgroundColor(Color.YELLOW);
     		mediaPlayer = MediaPlayer.create(this, R.raw.rhyme_baba);
-    		
     		break;
     	case 1:
     		rhyme_title.setText(R.string.rhyme_london_title);
@@ -194,4 +216,21 @@ public class DisplayRhymesActivity extends Activity implements OnItemSelectedLis
     public void onNothingSelected(AdapterView<?> parent) {
         // Another interface callback
     }
+    
+    @Override
+    protected void onStop() {
+    	super.onStop();
+    	Log.i("RhymeActivity", "OnStop()");
+    	//threadPool.shutdown();
+    	myHandler.removeCallbacks(UpdateSongTime);
+    	mediaPlayer.stop();
+    	mediaPlayer.release();
+        
+    }
+/*    
+    @Override
+    protected void onDestroy() {
+    	Log.i("RhymeActivity", "OnDestroy()");
+    	super.onDestroy();
+    }*/
 }

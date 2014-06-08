@@ -40,7 +40,7 @@
         android:id="@+id/more_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/label_lat_lng"
+        android:layout_above="@+id/more_logo"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="166dp"
         android:src="@drawable/ic_launcher"
