@@ -415,6 +415,7 @@
     <!-- Display Rhymes -->         
     
     <string-array name="rhymes_array">
+        <item>Play all</item>
         <item>Ba Ba Black Sheep</item>
         <item>London Bridge</item>
         <item>If You Are Happy</item>
