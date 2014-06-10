@@ -43,12 +43,10 @@ public class DisplayRhymesActivity extends Activity implements
 	 */
 	private SeekBar seekbar;
 	private ImageButton playButton, pauseButton;
-	//private static int oneTimeOnly = 0;
-
 	private static int playCountCurrent = 0;
 	private static int playCountSize = 0;
 	private static boolean isPlayALlRequested = true;
-	//private View view;
+	private View mainview;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,38 +97,27 @@ public class DisplayRhymesActivity extends Activity implements
 		myHandler = new Handler();
 		
 		//Prepare play list with title, content, audio etc...
-		playlist = new Hashtable();		
-		//view = getWindow().findViewById(R.id.rhymesLayout);
-		//Toast.makeText(view.getContext(), "This is the view", Toast.LENGTH_LONG).show();
-		playlist.put(1, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, R.drawable.rhyme_baba, MediaPlayer.create(this, R.raw.rhyme_baba)));
-		playlist.put(2, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.RED, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
-		playlist.put(3, new Playlist(R.string.rhyme_if_you_are_happy_title, R.string.rhyme_if_you_are_happy, Color.GREEN, 0, MediaPlayer.create(this, R.raw.rhyme_happy)));
-		playlist.put(4, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.BLUE, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
-		playCountSize = playlist.size();
+		playlistCreate(0);
 	}
 
-	public void playAll() {
-	
-		playCountSize = playlist.size();
-		Playlist item;
-		if (++playCountCurrent <= playCountSize) {
-			item = (Playlist) playlist.get(playCountCurrent);
-			item.init();	
-			play();		
+
+	public void playNext() {
+		
+		if (playCountCurrent < playCountSize) {
+			Playlist selectedItem = (Playlist) playlist.get(playCountCurrent++);
+			selectedItem.init();
+			play(mainview);	
 		}
 	}
 
-	public void play() {
+	public void play(View view) {
 
 		mediaPlayer.start();
 		finalTime = mediaPlayer.getDuration();
 		startTime = mediaPlayer.getCurrentPosition();
 		
 		seekbar.setMax((int) finalTime);
-/*		if (oneTimeOnly == 0) {
-			seekbar.setMax((int) finalTime);
-			oneTimeOnly = 1;
-		}*/
+		
 		endTimeField.setText(String.format(
 				"%d min, %d sec",
 				TimeUnit.MILLISECONDS.toMinutes((long) finalTime),
@@ -152,13 +139,11 @@ public class DisplayRhymesActivity extends Activity implements
 		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
 			public void onCompletion(MediaPlayer mp1) {
 				reset();
-				/*pauseButton.setEnabled(false);
-				playButton.setEnabled(true);
-				//oneTimeOnly = 0;
-				startTime = 0;
-				finalTime = 0;*/
-				if (isPlayALlRequested) {
-					playAll();
+				if (isPlayALlRequested && playCountCurrent < playCountSize) {
+					playNext();
+				} else {
+					playCountCurrent = 0;
+					isPlayALlRequested = false;
 				}
 			}
 		});
@@ -186,6 +171,7 @@ public class DisplayRhymesActivity extends Activity implements
 	public void reset() {
 		if (mediaPlayer.isPlaying()) {
 			mediaPlayer.stop();
+			mediaPlayer.release();
 		}
 		pauseButton.setEnabled(false);
 		playButton.setEnabled(true);
@@ -207,6 +193,7 @@ public class DisplayRhymesActivity extends Activity implements
 	public void stop(View view) {
 		
 		mediaPlayer.stop();
+		mediaPlayer.release();
 		pauseButton.setEnabled(false);
 		playButton.setEnabled(true);
 	}
@@ -214,17 +201,43 @@ public class DisplayRhymesActivity extends Activity implements
 	public void onItemSelected(AdapterView<?> parent, View view, int pos,
 			long id) {
 		
-		Toast.makeText(view.getContext(), "pos "+ pos, Toast.LENGTH_SHORT).show();
-		if (pos == 0 ) {
+		Playlist selectedItem;
+		reset();
+		playlist = new Hashtable();
+		switch (pos) {
+		case 0:
 			isPlayALlRequested = true;
-			playAll();
-			isPlayALlRequested = false;
-		} else {
-			reset();
-			Playlist selectedItem = (Playlist) playlist.get(pos);
+			playCountCurrent = 0;
+			mainview  = view;
+			playlistCreate(0); //Create all the rhymes
+			playNext();
+			break;
+		case 1:
+			playlistCreate(1);			
+			selectedItem = (Playlist) playlist.get(0);
 			selectedItem.init();
-			play();
+			play(view);
+			break;
+		case 2:	
+			playlistCreate(2);
+			selectedItem = (Playlist) playlist.get(1);
+			selectedItem.init();
+			play(view);
+			break;
+		case 3:
+			playlistCreate(3);			
+			selectedItem = (Playlist) playlist.get(2);
+			selectedItem.init();
+			play(view);
+			break;
+		case 4:
+			playlistCreate(4);			
+			selectedItem = (Playlist) playlist.get(3);
+			selectedItem.init();
+			play(view);
+			break;
 		}
+
 		// An item was selected. You can retrieve the selected item using
 		// parent.getItemAtPosition(pos)
 	}
@@ -269,5 +282,30 @@ public class DisplayRhymesActivity extends Activity implements
 			rhyme_content.setBackgroundColor(color);
 			mediaPlayer = player;			
 		}
-	}	
+	}
+	
+	public void playlistCreate(int index) {
+		playlist = new Hashtable();
+		switch (index) {		
+		case 1:
+			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, R.drawable.rhyme_baba, MediaPlayer.create(this, R.raw.rhyme_baba)));
+			break;
+		case 2:
+			playlist.put(1, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.RED, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
+			break;
+		case 3:
+			playlist.put(2, new Playlist(R.string.rhyme_if_you_are_happy_title, R.string.rhyme_if_you_are_happy, Color.GREEN, 0, MediaPlayer.create(this, R.raw.rhyme_happy)));
+			break;
+		case 4:
+			playlist.put(3, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.BLUE, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
+			break;
+		default:
+			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, R.drawable.rhyme_baba, MediaPlayer.create(this, R.raw.rhyme_baba)));
+			playlist.put(1, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.RED, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
+			playlist.put(2, new Playlist(R.string.rhyme_if_you_are_happy_title, R.string.rhyme_if_you_are_happy, Color.GREEN, 0, MediaPlayer.create(this, R.raw.rhyme_happy)));
+			playlist.put(3, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.BLUE, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
+			break;
+		}
+		playCountSize = playlist.size();
+	}
 }
