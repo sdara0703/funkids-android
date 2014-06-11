@@ -9,17 +9,10 @@
     <string name="button_send">Click Me</string>
     <string name="title_activity_display_message">Welcome</string>
     <string name="edit_message">Enter your name</string>
-    <string name="welcome">Welcome to AppT8!!!</string>
-    <string name="courtesy_message">Thank you for downloading the app. This fun learning app for kids brought to you by AppT8.com. Developed by Srinivasa Dara. \n\n</string>
-    <string name="setting_sound">Enable Sound </string>
+    <string name="welcome">Welcome Kids, It\'s the place to learn Alphabets, Numbers and Rhymes!!!</string>
+    <string name="courtesy_message">Thank you for downloading the app. This fun learning app for kids brought to you by AppT8.com. Developed by Srinivasa Dara.\n\n</string>
+    <string name="setting_sound">Enable Sound</string>
     <string name="settings">Settings</string>
-
-    <!-- Action Bar titles -->
-    <string name="home_tab">Home</string>
-    <string name="alphabets_tab">Alphabets</string>
-    <string name="numbers_tab">Numbers</string>
-    <string name="rhymes_tab">Rhymes</string>
-    <string name="more_tab">More</string>
 
     <!-- Alphabets -->
     <string name="title_activity_alphabets">Learn Alphabets</string>
@@ -33,6 +26,23 @@
     <string name="h">H</string>
     <string name="i">I</string>
     <string name="j">J</string>
+    <string name="k">K</string>
+    <string name="l">L</string>
+    <string name="m">M</string>
+    <string name="n">N</string>
+    <string name="o">O</string>
+    <string name="p">P</string>
+    <string name="q">Q</string>
+    <string name="r">R</string>
+    <string name="s">S</string>
+    <string name="t">T</string>
+    <string name="U">U</string>
+    <string name="V">V</string>
+    <string name="W">W</string>
+    <string name="X">X</string>
+    <string name="Y">Y</string>
+    <string name="Z">Z</string>          
+    
     <string name="surprise_pic">Surprise Image</string>
     <string name="message_zoom_touch_expand">Touch a photo to Zoom</string>
     <string name="description_zoom_touch_close">Touch this photo to close</string>
@@ -50,11 +60,7 @@
     <string name="eight">Eight</string>
     <string name="nine">Nine</string>
     <string name="ten">Ten</string>
-    <string name="marquee_number_text">
-<![CDATA[
-        <html><body><marquee>ONE   TWO   THREE   FOUR   FIVE   SIX   SEVEN   EIGHT   NINE   TEN</marquee></body></html>
-        ]]>
-    </string>
+    <string name="marquee_number_text"><![CDATA[<html><body><marquee>ONE   TWO   THREE   FOUR   FIVE   SIX   SEVEN   EIGHT   NINE   TEN</marquee></body></html>]]></string>
 
     <!-- Rhymes -->
     <string name="title_activity_rhymes">Rhymes...</string>
@@ -62,53 +68,8 @@
     <string name="action_next">Next</string>
     <string name="action_finish">Finish</string>
     <string name="title_template_step"><xliff:g id="step_number">%1$d</xliff:g></string>
-    <string name="rhymes_index1">
-<![CDATA[
-       <html><body><marquee>Ba Ba Black Sheep</marquee></body></html>
-		
-
-    ]]>
-    </string>
-    <string name="rhymes_index12">
-<![CDATA[
-        <font size="6" color="#0000FF"><tt><u>Ba Ba Black Sheep</u></tt></font><br><br>
-		<font size="6" color="#FF7400"><tt><u>London Bridge</u></tt></font><br><br>
-		<font size="6" color="#BF3330"><tt><u>If You Are Happy</u></tt></font><br><br>
-		<font size="6" color="#FF7283"><tt><u>Twinkle Twinkle</u></tt></font><br><br>
-		<font size="6" color="#0000FF"><tt><u>Ba Ba Black Sheep</u></tt></font><br><br>
-		<font size="6" color="#FF7400"><tt><u>London Bridge</u></tt></font><br><br>
-		<font size="6" color="#FF7283"><tt><u>Twinkle Twinkle</u></tt></font><br><br>
-		<font size="6" color="#BF3330"><tt><u>If You Are Happy</u></tt></font><br><br>
-
-    ]]>
-    </string>
-    <!--
-        <font color="#FF7283"><tt><u><h5>Twinkle Twinkle</h5></u></tt></font><br>
-		<font color="#BF3330"><tt><u><h6>If You Are Happy</h6></u></tt></font><br>
-		<font size="1" color="#BF3330"><tt><u>Size 1</u></tt></font><br>
-		<font size="5" color="#BF3330"><tt><u>Size 5</u></tt></font><br>
-		<font size="9" color="#BF3330"><tt><u>Size 9</u></tt></font><br>
-    -->
-    <string name="rhyme_baba_html">
-<![CDATA[
-       	<font size="6" color="#0000FF"><tt><u><center>Ba Ba Black Sheep</center></u></font><br><br>	
-        <font size="4" color="#0000FF"><tt>
-			Ba Ba Black Sheep<br><br>
-			Have you any wool?<br><br>
-			Yes sir, yes sir,<br><br>
-			Three 3 bags full.<br><br>
-			One 1 for my master.<br><br>
-			One 1 for my dame.<br><br>
-			One 1 for the little boy,<br><br>
-			Who cries in the lane.</tt>
-		</font><br><br>
-	]]>
-    </string>
-    <string name="rhyme_baba_title">
-        Ba Ba Black Sheep...
-    </string>
-    <string name="rhyme_baba">
-        	Ba Ba Black Sheep\n\n
+    <string name="rhyme_baba_title">Ba Ba Black Sheep...</string>
+    <string name="rhyme_baba">Ba Ba Black Sheep\n\n
 			Ba Ba Black Sheep\n\n
 			Have you any wool?\n\n
 			Yes sir, yes sir,\n\n
@@ -116,13 +77,9 @@
 			One 1 for my master.\n\n
 			One 1 for my dame.\n\n
 			One 1 for the little boy,\n\n
-			Who cries in the lane.\n\n
-		    </string>
-	<string name="rhyme_london_title">
-	    London Bridge Is...
-	</string>
-	<string name="rhyme_london">	  
-		London Bridge is broken down,\n\n
+			Who cries in the lane.\n\n	</string>
+    <string name="rhyme_london_title">London Bridge Is...</string>
+    <string name="rhyme_london">London Bridge is broken down,\n\n
 		Broken down, broken down.\n\n
 		London Bridge is broken down,\n\n
 		My fair lady.\n\n
@@ -169,158 +126,9 @@
 		Give him a pipe to smoke all night,\n\n
 		Smoke all night, smoke all night,\n\n
 		Give him a pipe to smoke all night,\n\n
-		My fair lady.\n\n
-	</string>
-    <string name="rhyme_london_html">
-<![CDATA[
-       <HTML>
-	<font size="6" color="#FF7400"><tt><u><center>London Bridge is broken down</center></u>
-	</font><br><br>	
-	<font size="4" color="#FF7400"><tt>
-		London Bridge is broken down,<br><br>
-		Broken down, broken down.<br><br>
-		London Bridge is broken down,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#FFE640">
-		Build it up with wood and clay,<br><br>
-		Wood and clay, wood and clay,<br><br>
-		Build it up with wood and clay,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#1D7373">			
-		Wood and clay will wash away,<br><br>
-		Wash away, wash away,<br><br>
-		Wood and clay will wash away,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#8F2471">
-		Build it up with bricks and mortar,<br><br>
-		Bricks and mortar, bricks and mortar,<br><br>
-		Build it up with bricks and mortar,<br><br>
-		My fair lady.<br><br>
-		</FONT>
-	<FONT size="4" color="#FF7400">
-		Bricks and mortar will not stay,<br><br>
-		Will not stay, will not stay,<br><br>
-		Bricks and mortar will not stay,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#E667AF">			
-		Build it up with iron and steel,<br><br>
-		Iron and steel, iron and steel,<br><br>
-		Build it up with iron and steel,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#FFB273">			
-		Iron and steel will bend and bow,<br><br>
-		Bend and bow, bend and bow,<br><br>
-		Iron and steel will bend and bow,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#FF9640">			
-		Build it up with silver and gold,<br><br>
-		Silver and gold, silver and gold,<br><br>
-		Build it up with silver and gold,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#008500">			
-		Silver and gold will be stolen away,<br><br>
-		Stolen away, stolen away,<br><br>
-		Silver and gold will be stolen away,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#A64B00">			
-		Set a man to watch all night,<br><br>
-		Watch all night, watch all night,<br><br>
-		Set a man to watch all night,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#BF7130">			
-		Suppose the man should fall asleep,<br><br>
-		Fall asleep, fall asleep,<br><br>
-		Suppose the man should fall asleep?<br><br>
-		My fair lady.<br><br>
-	</FONT>
-	<FONT size="4" color="#67E667">			
-		Give him a pipe to smoke all night,<br><br>
-		Smoke all night, smoke all night,<br><br>
-		Give him a pipe to smoke all night,<br><br>
-		My fair lady.<br><br>
-	</FONT>
-		</tt>
-</HTML>
-       
-]]>
-    </string>
-    <string name="rhyme_if_you_are_happy_html">
-<![CDATA[
-<HTML>
-	<font size="6" color="#BF3330"><tt><u><center>If you are happy and you know it</center></u>
-	</font><br><br>	
-	<font size="4" color="#FF7400"><tt>
-		If you are happy and you know it,<br><br>
-		Clap your hands.<br><br>
-		Clap! Clap!<br><br>
-		If you are happy and you know it,<br><br>
-		Clap your hands.<br><br>
-		Clap! Clap!<br><br>
-		If you are happy and you know it,<br><br>
-		Then your face will surely show it.<br><br>
-		If you are happy and you know it,<br><br>
-		Clap your hands.<br><br>
-		Clap! Clap!<br><br>
-	</FONT>
-	
-	<FONT size="4" color="#FFE640">
-		If you are happy and you know it,<br><br>
-		stomp your feet.<br><br>
-		stomp!stomp!<br><br>
-		If you are happy and you know it,<br><br>
-		stomp your feet.<br><br>
-		stomp!stomp!<br><br>
-	</FONT>
-	
-	<FONT size="4" color="#1D7373">			
-		If you are happy and you know it,<br><br>
-		Shout "hurray!"<br><br>
-		hurray!<br><br>
-		If you are happy and you know it,<br><br>
-		Shout "hurray!"<br><br>
-		hurray!<br><br>
-	</FONT>
-	<FONT size="4" color="#8F2471">
-		If you are happy and you know it,<br><br>
-		Then you are face will surely show it.<br><br>
-		If you are happy and you know it,<br><br>
-		Shout "hurray!"<br><br>
-		hurray!<br><br>
-		</FONT>
-	<FONT size="4" color="#FF7400">
-		If you are happy and you know it,<br><br>
-		Do all three<br><br>
-		Clap!stomp!hurray!<br><br>
-		If you are happy and you know it,<br><br>
-		Do all three<br><br>
-		Clap!stomp!hurray!<br><br>
-		If you are happy and you know it,<br><br>
-		Then your face will surely show it.<br><br>
-
-		If you are happy and you know it,<br><br>
-		Do all three<br><br>
-		Clap!stomp!hurray!<br><br>
-	</FONT>
-		</tt>
-</HTML>
-
-]]>
-    </string>
-    <string name="rhyme_if_you_are_happy_title">
-        If You Are Happy...
-    </string>
-    <string name="rhyme_if_you_are_happy">
-        
-		If you are happy and you know it,\n\n
+		My fair lady.\n\n	</string>
+    <string name="rhyme_if_you_are_happy_title">If You Are Happy...</string>
+    <string name="rhyme_if_you_are_happy">If you are happy and you know it,\n\n
 		Clap your hands.\n\n
 		Clap! Clap!\n\n
 		If you are happy and you know it,\n\n
@@ -363,43 +171,9 @@
 
 		If you are happy and you know it,\n\n
 		Do all three\n\n
-		Clap!stomp!hurray!\n\n
-        
-    </string>
-    <string name="rhyme_twinkle_html">
-<![CDATA[
-       <HTML>
-	<font size="6" color="#FF7283"><tt><u><center>Twinkle Twinkle Little Star</center></u>
-	</font><br><br>	
-	<font size="4" color="#FF7400"><tt>
-		Twinkle, twinkle, little star, <br><br>
-		How I wonder what you are. <br><br>
-		Up above the world so high,<br><br> 
-		Like a diamond in the sky. <br><br>
-	</FONT>
-	
-	<FONT size="4" color="#FFE640">
-		Twinkle, twinkle, little star. <br><br>
-		How I wonder what you are. <br><br>
-		Up above the world so high, <br><br>
-		Like a diamond in the sky. <br><br>
-	</FONT>
-	
-	<FONT size="4" color="#1D7373">			
-		Twinkle, twinkle, little star. <br><br>
-		How I wonder what you are. <br><br>
-	</FONT>
-		</tt>
-</HTML>
-        ]]>
-    </string>
-
-    <string name="rhyme_twinkle_title">
-        Twinkle Twinkle...
-    </string>
-        
-    <string name="rhyme_twinkle">
-        Twinkle, twinkle, little star, \n\n
+		Clap!stomp!hurray!\n\n	</string>
+    <string name="rhyme_twinkle_title">Twinkle Twinkle...</string>
+    <string name="rhyme_twinkle">Twinkle, twinkle, little star, \n\n
 		How I wonder what you are. \n\n
 		Up above the world so high,\n\n 
 		Like a diamond in the sky. \n\n
@@ -410,84 +184,37 @@
 		Like a diamond in the sky. \n\n
 		
 		Twinkle, twinkle, little star. \n\n
-		How I wonder what you are. \n\n
-    </string>
-    <!-- Display Rhymes -->         
-    
+		How I wonder what you are. \n\n	</string>
+	
+    <!-- Display Rhymes -->
     <string-array name="rhymes_array">
         <item>Play all</item>
         <item>Ba Ba Black Sheep</item>
         <item>London Bridge</item>
         <item>If You Are Happy</item>
         <item>Twinkle Twinkle</item>
-
     </string-array>
- 
-    <string name="rhyme_index">
-         Ba Ba Black Sheep\nLondon Bridge\nIf You Are Happy\nTwinkle Twinkle
-		</string>
-		
- 
- 
-   <string name="now_playing">Now Playing:</string>
-   <string name="initial_Time">0 min, 0 sec</string>
-    <!-- My address -->
-    <!-- Application identifiers -->
 
-    <string name="app_tag">LocationUpdates</string>
-    <string name="app_description">        Displays current address and current or updated location using Location Services</string>
-
-    <!-- User interface labels and strings -->
-
-
-    <!-- Address format -->
-    <string name="address_output_string">%1$s %2$s %3$s</string>
-
-    <!-- Latitude, longitude format -->
-    <string name="latitude_longitude">%1$.8f, %2$.8f</string>
-
-    <!-- Labels -->
-    <string name="latlng">Lat/Long:</string>
-    <string name="address">Address:</string>
-
-    <!-- Messages -->
-    <string name="connected">Client connected</string>
-    <string name="connection_error_code_unknown">Unknown connection error code:  %1$d</string>
-    <string name="connection_failed">Connection failed</string>
-    <string name="disconnected">Client disconnected</string>
-    <string name="get_address">Get Address</string>
-    <string name="get_location">Get Location</string>
-    <string name="illegal_argument_exception">        Illegal arguments: Latitude %1$.8f Longitude %2$.8f</string>
-    <string name="invalid_action">Invalid intent action %1$s</string>
-    <string name="invalid_integer_id">Invalid integer request ID: %1$s</string>
-    <string name="IO_Exception_getFromLocation">IO Exception in Geocoder.getFromLocation()</string>
-    <string name="location_requested">Periodic updates requested</string>
-    <string name="location_updated">Location updated</string>
-    <string name="location_update_error">Location update failed</string>
-    <string name="location_update_error_detail">        Location update error. code %1$d message %2$s</string>
-    <string name="location_update_missing_update">        Location update error. No incoming location.</string>
-    <string name="location_updates_stopped">Periodic updates stopped</string>
-    <string name="log_new_location">New location: %1$s</string>
-    <string name="no_address_found">No address found for location</string>
-    <string name="no_connection">No connection: Cannot request location</string>
-    <string name="no_geocoder_available">Cannot get address. No geocoder available.</string>
-    <string name="no_location_available">Location not available</string>
-    <string name="resolved">Error resolved. Please re-try operation.</string>
-    <string name="no_resolution">Google Play services: unable to resolve connection error.</string>
-    <string name="periodic_update_stop">Stopping periodic updates</string>
-    <string name="play_services_available">Google Play services is available</string>
-    <string name="request_location_updates_in_progress">        Can\'t request location updates, previous request hasn\'t finished</string>
-    <string name="start_updates">Start Updates</string>
-    <string name="stop_updates">Stop Updates</string>
+    <string name="rhyme_index">Ba Ba Black Sheep\n
+        London Bridge\n
+        If You Are Happy\n
+        Twinkle Twinkle</string>
+    <string name="now_playing">Now Playing:</string>
+    <string name="initial_Time">0 min, 0 sec</string>
     <string name="unknown">--Unknown--</string>
-    <string name="unknown_activity_request_code">        Received an unknown activity request code %1$d in onActivityResult.</string>
+    <string name="unknown_activity_request_code">Received an unknown activity request code %1$d in onActivityResult.</string>
+    
+    <!-- Titles -->
     <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="title_item_list">Items</string>
     <string name="title_item_detail">Item Detail</string>
     <string name="title_activity_more">Courtesy</string>
     <string name="title_activity_display_rhymes">DisplayRhymesActivity</string>
-
+    <string name="home_tab">Home</string>
+    <string name="alphabets_tab">Alphabets</string>
+    <string name="numbers_tab">Numbers</string>
+    <string name="rhymes_tab">Rhymes</string>
+    <string name="more_tab">More</string>
     
+
 </resources>

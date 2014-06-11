@@ -4,17 +4,12 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -22,15 +17,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class MainActivity extends ActionBarActivity {
 	public final static String MY_MESSAGE = "com.appt8.android.apps.funkids.MY_MESSAGE";
 	DrawView drawView = null;
-	Util util;// = new Util();
-	//public String welcomeMsg = "Welcome to AppT8!!!";
+	Util util;
 	class DrawView extends View {
         Paint paint = new Paint();
         String picName = "";
@@ -139,20 +131,15 @@ public class MainActivity extends ActionBarActivity {
 		
 
 		if (item.getTitle().toString().equals(getString(R.string.home_tab))) {	
-			//this.recreate();	
 		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
-			//Toast.makeText(this,"Show Alphabets",Toast.LENGTH_LONG).show();
-			//Intent intent = new Intent(this, ThumbActivity.class);
 			Intent intent = new Intent(this, AlphabetsActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
-			//Toast.makeText(this,"Show numbers",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, NumbersActivity.class);
 			startActivity(intent);
 			
 		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
-			//Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, DisplayRhymesActivity.class);
 			startActivity(intent);
 			

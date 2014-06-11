@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
-import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
@@ -26,7 +25,6 @@ import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class DisplayRhymesActivity extends Activity implements
 		OnItemSelectedListener {

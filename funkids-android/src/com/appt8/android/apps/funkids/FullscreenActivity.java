@@ -61,7 +61,7 @@ public class FullscreenActivity extends Activity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-            	Intent i = new Intent(FullscreenActivity.this, MainActivity.class);
+            	Intent i = new Intent(FullscreenActivity.this, DisplayRhymesActivity.class);
                 startActivity(i);
  
                 // close this activity

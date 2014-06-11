@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 @SuppressLint("NewApi")
 public class NumbersActivity extends ActionBarActivity {
@@ -32,7 +31,6 @@ public class NumbersActivity extends ActionBarActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setBackgroundColor(Color.TRANSPARENT);
         webView.loadData(getString(R.string.marquee_number_text), "text/html", "utf-8");
-        //webView.loadData("<html><body><marquee>Ba Ba Black Sheep</marquee></body></html>", "text/html", "utf-8");
 
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()

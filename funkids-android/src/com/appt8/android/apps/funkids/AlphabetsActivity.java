@@ -23,12 +23,9 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
@@ -38,8 +35,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
-//import android.widget.TextView;
-import android.widget.Toast;
+
 
 /**
  * A sample showing how to zoom an image thumbnail to full-screen, by animating the bounds of the
@@ -60,8 +56,6 @@ public class AlphabetsActivity extends ActionBarActivity {
      * subtle animations or animations that occur very frequently.
      */
     private int mShortAnimationDuration;
-   // private TextView tv = null;
-    private MediaPlayer mp = null;
     private Util util = new Util();
 
     BitmapDrawable bd;

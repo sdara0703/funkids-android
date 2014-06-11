@@ -1,24 +1,16 @@
 package com.appt8.android.apps.funkids;
 
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
-import android.opengl.Matrix;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.RotateAnimation;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
-import android.os.Build;
 
 public class MoreActivity extends ActionBarActivity {
 	private RelativeLayout layout;
