@@ -34,11 +34,8 @@ public class DisplayRhymesActivity extends Activity implements
 	private double startTime = 0;
 	private double finalTime = 0;
 	private Handler myHandler;
-	private Hashtable playlist;
-		
-	/*
-	 * private int forwardTime = 5000; private int backwardTime = 5000;
-	 */
+	private Hashtable<Object, Object> playlist;
+
 	private SeekBar seekbar;
 	private ImageButton playButton, pauseButton;
 	private static int playCountCurrent = 0;
@@ -54,10 +51,8 @@ public class DisplayRhymesActivity extends Activity implements
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		// getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 		setContentView(R.layout.fragment_display_rhymes);
-
-		// Populate Spinner Rhymes array
+		
 		Spinner spinner = (Spinner) findViewById(R.id.rhymes_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner
 		// layout
@@ -94,57 +89,57 @@ public class DisplayRhymesActivity extends Activity implements
 		pauseButton.setEnabled(false);
 		myHandler = new Handler();
 		
+		//Total songs will be size of rhymes array length - 1;
+		playCountSize = getResources().getStringArray(R.array.rhymes_array).length - 1;
 		//Prepare play list with title, content, audio etc...
 		playlistCreate(0);
 	}
 
-
-	public void playNext() {
-		
-		if (playCountCurrent < playCountSize) {
-			Playlist selectedItem = (Playlist) playlist.get(playCountCurrent++);
-			selectedItem.init();
-			play(mainview);	
-		}
-	}
-
 	public void play(View view) {
 
-		mediaPlayer.start();
-		finalTime = mediaPlayer.getDuration();
-		startTime = mediaPlayer.getCurrentPosition();
-		
-		seekbar.setMax((int) finalTime);
-		
-		endTimeField.setText(String.format(
-				"%d min, %d sec",
-				TimeUnit.MILLISECONDS.toMinutes((long) finalTime),
-				TimeUnit.MILLISECONDS.toSeconds((long) finalTime)
-						- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
-								.toMinutes((long) finalTime))));
-		startTimeField.setText(String.format(
-				"%d min, %d sec",
-				TimeUnit.MILLISECONDS.toMinutes((long) startTime),
-				TimeUnit.MILLISECONDS.toSeconds((long) startTime)
-						- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
-								.toMinutes((long) startTime))));
-		seekbar.setProgress((int) startTime);
-		myHandler.postDelayed(UpdateSongTime, 1000);
-		pauseButton.setEnabled(true);
-		playButton.setEnabled(false);
-
-    		
-		mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
-			public void onCompletion(MediaPlayer mp1) {
-				reset();
-				if (isPlayALlRequested && playCountCurrent < playCountSize) {
-					playNext();
-				} else {
-					playCountCurrent = 0;
-					isPlayALlRequested = false;
+		try {
+			mediaPlayer.start();
+			finalTime = mediaPlayer.getDuration();
+			startTime = mediaPlayer.getCurrentPosition();
+			
+			seekbar.setMax((int) finalTime);
+			
+			endTimeField.setText(String.format(
+					"%d min, %d sec",
+					TimeUnit.MILLISECONDS.toMinutes((long) finalTime),
+					TimeUnit.MILLISECONDS.toSeconds((long) finalTime)
+							- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
+									.toMinutes((long) finalTime))));
+			startTimeField.setText(String.format(
+					"%d min, %d sec",
+					TimeUnit.MILLISECONDS.toMinutes((long) startTime),
+					TimeUnit.MILLISECONDS.toSeconds((long) startTime)
+							- TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS
+									.toMinutes((long) startTime))));
+			seekbar.setProgress((int) startTime);
+			myHandler.postDelayed(UpdateSongTime, 1000);
+			pauseButton.setEnabled(true);
+			playButton.setEnabled(false);
+	
+	    		
+			mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+				public void onCompletion(MediaPlayer mp1) {
+					reset();
+					playCountCurrent++;
+					if (isPlayALlRequested && playCountCurrent < playCountSize) {
+						Playlist selectedItem = (Playlist) playlist.get(playCountCurrent);
+						selectedItem.init();
+						play(mainview);
+					} else {
+						playCountCurrent = 0;
+						isPlayALlRequested = false;
+					}
 				}
-			}
-		});
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.recreate();
+		}
 	}
 
 	private Runnable UpdateSongTime = new Runnable() {
@@ -175,69 +170,47 @@ public class DisplayRhymesActivity extends Activity implements
 		playButton.setEnabled(true);
 		startTimeField.setText(R.string.initial_Time);
 		endTimeField.setText(R.string.initial_Time);
-		// seekbar = (SeekBar)findViewById(R.id.seekBar1);
 		startTime = 0;
 		finalTime = 0;
-		//oneTimeOnly = 0;
 	}
 
 	public void pause(View view) {
-
-		mediaPlayer.pause();
-		pauseButton.setEnabled(false);
-		playButton.setEnabled(true); 
+		try {
+			mediaPlayer.pause();
+			pauseButton.setEnabled(false);
+			playButton.setEnabled(true); 			
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.recreate();
+		}
 	}
 
 	public void stop(View view) {
-		
-		mediaPlayer.stop();
-		mediaPlayer.release();
-		pauseButton.setEnabled(false);
-		playButton.setEnabled(true);
+		try {
+			mediaPlayer.stop();
+			mediaPlayer.release();
+			pauseButton.setEnabled(false);
+			playButton.setEnabled(true);
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.recreate();
+		}
 	}
 
-	public void onItemSelected(AdapterView<?> parent, View view, int pos,
-			long id) {
-		
+	public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {		
 		Playlist selectedItem;
 		reset();
-		playlist = new Hashtable();
-		switch (pos) {
-		case 0:
+		playlistCreate(pos);
+		if (pos == 0) { //Play all songs
 			isPlayALlRequested = true;
 			playCountCurrent = 0;
 			mainview  = view;
-			playlistCreate(0); //Create all the rhymes
-			playNext();
-			break;
-		case 1:
-			playlistCreate(1);			
-			selectedItem = (Playlist) playlist.get(0);
-			selectedItem.init();
-			play(view);
-			break;
-		case 2:	
-			playlistCreate(2);
-			selectedItem = (Playlist) playlist.get(1);
-			selectedItem.init();
-			play(view);
-			break;
-		case 3:
-			playlistCreate(3);			
-			selectedItem = (Playlist) playlist.get(2);
-			selectedItem.init();
-			play(view);
-			break;
-		case 4:
-			playlistCreate(4);			
-			selectedItem = (Playlist) playlist.get(3);
-			selectedItem.init();
-			play(view);
-			break;
+			selectedItem = (Playlist) playlist.get(pos);
+		} else { //Play selected song
+			selectedItem = (Playlist) playlist.get(pos-1);				
 		}
-
-		// An item was selected. You can retrieve the selected item using
-		// parent.getItemAtPosition(pos)
+		selectedItem.init();
+		play(view);	
 	}
 
 	public void onNothingSelected(AdapterView<?> parent) {
@@ -246,18 +219,28 @@ public class DisplayRhymesActivity extends Activity implements
 
 	@Override
 	protected void onStop() {
-		super.onStop();
+		super.onStop();		
 		Log.i("RhymeActivity", "OnStop()");
-		myHandler.removeCallbacks(UpdateSongTime);
-		mediaPlayer.stop();
-		mediaPlayer.release();
+		try {
+			myHandler.removeCallbacks(UpdateSongTime);
+			mediaPlayer.stop();
+			mediaPlayer.release();
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.recreate();
+		}
 	}
 
 	@Override
-	protected void onDestroy() {
-		Log.i("RhymeActivity", "OnDestroy()");
+	protected void onDestroy() {	
 		super.onDestroy();
-		myHandler.removeCallbacks(UpdateSongTime);
+		Log.i("RhymeActivity", "OnDestroy()");
+		try {
+			myHandler.removeCallbacks(UpdateSongTime);
+		} catch (Exception e) {
+			e.printStackTrace();
+			this.recreate();
+		}
 	}
 	
 	class Playlist {
@@ -283,10 +266,22 @@ public class DisplayRhymesActivity extends Activity implements
 	}
 	
 	public void playlistCreate(int index) {
-		playlist = new Hashtable();
+		playlist = new Hashtable<>();		
+		int size = getResources().getStringArray(R.array.rhymes_array).length - 1;
+		if(index == 0){ //add all songs to list
+			for(int i = 1; i < size; i++) {
+				addToPlayList(i);
+			}
+		} else { //add selected song to list
+			addToPlayList(index);
+		}
+	}
+	
+	public void addToPlayList(int index) {	
+		//Total count should be equal to size of rhymes array - rhymes_array from strings section.
 		switch (index) {		
 		case 1:
-			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, R.drawable.rhyme_baba, MediaPlayer.create(this, R.raw.rhyme_baba)));
+			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, 0, MediaPlayer.create(this, R.raw.rhyme_baba)));
 			break;
 		case 2:
 			playlist.put(1, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.RED, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
@@ -298,12 +293,7 @@ public class DisplayRhymesActivity extends Activity implements
 			playlist.put(3, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.BLUE, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
 			break;
 		default:
-			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, R.drawable.rhyme_baba, MediaPlayer.create(this, R.raw.rhyme_baba)));
-			playlist.put(1, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.RED, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
-			playlist.put(2, new Playlist(R.string.rhyme_if_you_are_happy_title, R.string.rhyme_if_you_are_happy, Color.GREEN, 0, MediaPlayer.create(this, R.raw.rhyme_happy)));
-			playlist.put(3, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.BLUE, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
 			break;
 		}
-		playCountSize = playlist.size();
 	}
 }
