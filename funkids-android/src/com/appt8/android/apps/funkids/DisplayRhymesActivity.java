@@ -34,6 +34,7 @@ public class DisplayRhymesActivity extends Activity implements
 	private double startTime = 0;
 	private double finalTime = 0;
 	private Handler myHandler;
+	Handler controllerHandler;
 	private Hashtable<Object, Object> playlist;
 
 	private SeekBar seekbar;
@@ -42,7 +43,8 @@ public class DisplayRhymesActivity extends Activity implements
 	private static int playCountSize = 0;
 	private static boolean isPlayALlRequested = true;
 	private View mainview;
-
+	private View selectionLayout,progressLayout,controllersLayout;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -79,6 +81,14 @@ public class DisplayRhymesActivity extends Activity implements
 		rhyme_content = (TextView) findViewById(R.id.txtRhymeContent);
 		rhyme_content.setMovementMethod(new ScrollingMovementMethod());
 
+		
+		selectionLayout = findViewById(R.id.LinearLayout2);
+		progressLayout = findViewById(R.id.LinearLayout5);
+		controllersLayout = findViewById(R.id.LinearLayout6);
+		
+		controllerHandler = new Handler();
+		controllerHandler.postDelayed(hideControllerThread, 5000);
+		
 		mediaPlayer = MediaPlayer.create(this, R.raw.rhyme_baba);
 		playButton = (ImageButton) findViewById(R.id.imagePlay);
 		pauseButton = (ImageButton) findViewById(R.id.imagePause);
@@ -207,6 +217,7 @@ public class DisplayRhymesActivity extends Activity implements
 			mainview  = view;
 			selectedItem = (Playlist) playlist.get(pos);
 		} else { //Play selected song
+			isPlayALlRequested = false;
 			selectedItem = (Playlist) playlist.get(pos-1);				
 		}
 		selectedItem.init();
@@ -243,6 +254,58 @@ public class DisplayRhymesActivity extends Activity implements
 		}
 	}
 	
+	//Autohide Play and pause buttons
+		private Runnable hideControllerThread = new Runnable() {
+			public void run() {
+				//playButton.setVisibility(View.GONE);
+				//pauseButton.setVisibility(View.GONE);
+				selectionLayout.setVisibility(View.GONE);
+				progressLayout.setVisibility(View.GONE);
+				controllersLayout.setVisibility(View.GONE);
+			}
+		};
+		
+		public void hideControllers() {
+			Log.i("hideControllers", "Inside hideControllers");
+			controllerHandler.postDelayed(hideControllerThread, 5000);
+		}
+		
+		public void showControllers() {
+			Log.i("showControllers", "Inside showControllers");
+			//playButton.setVisibility(View.VISIBLE);
+			//pauseButton.setVisibility(View.VISIBLE);
+			selectionLayout.setVisibility(View.VISIBLE);
+			progressLayout.setVisibility(View.VISIBLE);
+			controllersLayout.setVisibility(View.VISIBLE);
+			controllerHandler.removeCallbacks(hideControllerThread);
+			hideControllers();
+		}
+		
+		@Override
+		public void onUserInteraction() {
+			super.onUserInteraction();
+			Log.i("onUserInteraction", "Inside onUserInteraction");
+			if (progressLayout.getVisibility() == View.VISIBLE) {
+				Log.i("onUserInteraction", "Inside onUserInteraction111");
+				controllerHandler.removeCallbacks(hideControllerThread);
+			} else {
+				Log.i("onUserInteraction", "Inside onUserInteraction222");
+				showControllers();
+			}
+		}
+		@Override
+		public void onWindowFocusChanged(boolean hasFocus) {
+		        super.onWindowFocusChanged(hasFocus);
+		    if (hasFocus) {
+		    	getWindow().getDecorView().setSystemUiVisibility(
+		                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+		                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+		                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+		                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+		                | View.SYSTEM_UI_FLAG_FULLSCREEN
+		                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+		   
+		}
 	class Playlist {
 		int title;
 		int content;
@@ -267,7 +330,7 @@ public class DisplayRhymesActivity extends Activity implements
 	
 	public void playlistCreate(int index) {
 		playlist = new Hashtable<>();		
-		int size = getResources().getStringArray(R.array.rhymes_array).length - 1;
+		int size = getResources().getStringArray(R.array.rhymes_array).length;
 		if(index == 0){ //add all songs to list
 			for(int i = 1; i < size; i++) {
 				addToPlayList(i);
@@ -281,16 +344,16 @@ public class DisplayRhymesActivity extends Activity implements
 		//Total count should be equal to size of rhymes array - rhymes_array from strings section.
 		switch (index) {		
 		case 1:
-			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.YELLOW, 0, MediaPlayer.create(this, R.raw.rhyme_baba)));
+			playlist.put(0, new Playlist(R.string.rhyme_baba_title,R.string.rhyme_baba, Color.TRANSPARENT, 0, MediaPlayer.create(this, R.raw.rhyme_baba)));
 			break;
 		case 2:
-			playlist.put(1, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.RED, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
+			playlist.put(1, new Playlist(R.string.rhyme_london_title, R.string.rhyme_london, Color.TRANSPARENT, 0, MediaPlayer.create(this, R.raw.rhyme_london)));
 			break;
 		case 3:
-			playlist.put(2, new Playlist(R.string.rhyme_if_you_are_happy_title, R.string.rhyme_if_you_are_happy, Color.GREEN, 0, MediaPlayer.create(this, R.raw.rhyme_happy)));
+			playlist.put(2, new Playlist(R.string.rhyme_if_you_are_happy_title, R.string.rhyme_if_you_are_happy, Color.TRANSPARENT, 0, MediaPlayer.create(this, R.raw.rhyme_happy)));
 			break;
 		case 4:
-			playlist.put(3, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.BLUE, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
+			playlist.put(3, new Playlist(R.string.rhyme_twinkle_title, R.string.rhyme_twinkle, Color.TRANSPARENT, 0, MediaPlayer.create(this, R.raw.rhyme_twinkle)));
 			break;
 		default:
 			break;

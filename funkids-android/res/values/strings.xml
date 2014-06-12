@@ -68,7 +68,7 @@
     <string name="action_next">Next</string>
     <string name="action_finish">Finish</string>
     <string name="title_template_step"><xliff:g id="step_number">%1$d</xliff:g></string>
-    <string name="rhyme_baba_title">Ba Ba Black Sheep...</string>
+    <string name="rhyme_baba_title">Ba Ba Black Sheep...\n</string>
     <string name="rhyme_baba">Ba Ba Black Sheep\n\n
 			Ba Ba Black Sheep\n\n
 			Have you any wool?\n\n
@@ -78,7 +78,7 @@
 			One 1 for my dame.\n\n
 			One 1 for the little boy,\n\n
 			Who cries in the lane.\n\n	</string>
-    <string name="rhyme_london_title">London Bridge Is...</string>
+    <string name="rhyme_london_title">London Bridge Is..\n.</string>
     <string name="rhyme_london">London Bridge is broken down,\n\n
 		Broken down, broken down.\n\n
 		London Bridge is broken down,\n\n
@@ -127,7 +127,7 @@
 		Smoke all night, smoke all night,\n\n
 		Give him a pipe to smoke all night,\n\n
 		My fair lady.\n\n	</string>
-    <string name="rhyme_if_you_are_happy_title">If You Are Happy...</string>
+    <string name="rhyme_if_you_are_happy_title">If You Are Happy...\n</string>
     <string name="rhyme_if_you_are_happy">If you are happy and you know it,\n\n
 		Clap your hands.\n\n
 		Clap! Clap!\n\n
@@ -172,7 +172,7 @@
 		If you are happy and you know it,\n\n
 		Do all three\n\n
 		Clap!stomp!hurray!\n\n	</string>
-    <string name="rhyme_twinkle_title">Twinkle Twinkle...</string>
+    <string name="rhyme_twinkle_title">Twinkle Twinkle...\n</string>
     <string name="rhyme_twinkle">Twinkle, twinkle, little star, \n\n
 		How I wonder what you are. \n\n
 		Up above the world so high,\n\n 
