@@ -13,14 +13,14 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 public class MoreActivity extends ActionBarActivity {
-	private RelativeLayout layout;
+	//private RelativeLayout layout;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_more);
 
-		layout = (RelativeLayout) findViewById(R.id.container);
-		layout.setBackgroundColor(Color.BLACK);
+		/*layout = (RelativeLayout) findViewById(R.id.container);
+		layout.setBackgroundColor(Color.BLACK);*/
 		
 		//Rotate logo
 /*		RotateAnimation anim = new RotateAnimation(0f,  350f, 15f, 15f);

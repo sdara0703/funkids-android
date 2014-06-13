@@ -1,49 +1,49 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-     >
-
-    <TextView
-        android:id="@+id/txtCourtosy"
+<GridLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+   	xmlns:tools="http://schemas.android.com/tools"
+   	android:id="@+id/container"
+   	android:layout_width="fill_parent"
+   	android:layout_height="fill_parent"
+	android:layout_weight="0.9"
+   	android:orientation="vertical"
+   	tools:context="com.appt8.android.apps.funkids.MoreActivity" >
+  
+  	<ImageView
+       	android:id="@+id/more_logo"
+       	android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"
+       	android:layout_gravity="top"        
+       	android:src="@drawable/ic_launcher"
+       	android:contentDescription="@string/welcome" />     
+  	<TextView
+       	android:id="@+id/txtCourtosy"
+       	android:layout_width="wrap_content"
+       	android:layout_height="wrap_content"
+       	android:text="@string/courtesy_message"
+       	android:textColor="#BF2828"
+       	android:textSize="16sp" />
+  	<LinearLayout
+		android:id="@+id/LinearLayout2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:text="@string/courtesy_message"
-        android:textColor="#BF2828"
-        android:textSize="16sp" />
+        android:orientation="horizontal"
+        android:layout_gravity="right">
 
+  	<TextView
+  	    android:id="@+id/txtRateme"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="35dp"
+  	    android:layout_gravity="center_horizontal"
+  	    android:gravity="center_vertical"
+  	    android:text="@string/rateme_message"
+  	    android:textColor="#BF2828"
+  	    android:textSize="16sp" />
+  	    		
+		<Button
+		    android:id="@+id/more_rateme"
+		    android:layout_width="wrap_content"
+		    android:layout_height="match_parent"
+		    android:layout_gravity="center_horizontal"
+		    android:text="Rate Me" />
 
-    <!-- CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="64dp"
-        android:text="@string/setting_sound" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox1"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="19dp"
-        android:text="@string/settings"
-        android:textSize="@dimen/abc_action_bar_title_text_size" /-->
-
-    <ImageView
-        android:id="@+id/more_logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/more_logo"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="166dp"
-        android:src="@drawable/ic_launcher"
-        android:contentDescription="@string/welcome" />
-
-</RelativeLayout>
+	 </LinearLayout>
+ </GridLayout>

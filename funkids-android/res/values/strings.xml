@@ -10,7 +10,8 @@
     <string name="title_activity_display_message">Welcome</string>
     <string name="edit_message">Enter your name</string>
     <string name="welcome">Welcome Kids, It\'s the place to learn Alphabets, Numbers and Rhymes!!!</string>
-    <string name="courtesy_message">Thank you for downloading the app. This fun learning app for kids brought to you by AppT8.com. Developed by Srinivasa Dara.\n\n</string>
+    <string name="courtesy_message">Thank you for downloading the app. This fun learning app for kids brought to you by AppT8.com. Developed by Srinivasa Dara.\n</string>
+    <string name="rateme_message">Please rate this app</string>    
     <string name="setting_sound">Enable Sound</string>
     <string name="settings">Settings</string>
 
