@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ButtonBarButton"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:fadingEdge="vertical"
+    android:orientation="vertical"
+    android:showDividers="beginning|middle" >
+
+    <Button
+        android:id="@+id/buttonOval"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:contentDescription="OVAL"
+        android:onClick="showDialog"
+        android:text="Oval" />
+    
+    <Button
+        android:id="@+id/buttonShowCustomDialog"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:contentDescription="CIRCLE"
+        android:onClick="showDialog"
+        android:text="Circle" />
+
+    <Button
+        android:id="@+id/buttonShowCustomDialog"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:contentDescription="RECTANGLE"
+        android:onClick="showDialog"
+        android:text="Rectangle" />
+    
+    <Button
+        android:id="@+id/buttonShowCustomDialog"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:contentDescription="TRIANGLE"
+        android:onClick="showDialog"
+        android:text="Triange" />
+  
+    <Button
+        android:id="@+id/buttonShowCustomDialog"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"
+        android:contentDescription="SQUARE"
+        android:onClick="showDialog"
+        android:text="Square" />
+
+    <Button
+        android:id="@+id/buttonShowCustomDialog"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"        
+        android:contentDescription="PENTAGON"
+        android:onClick="showDialog"
+        android:text="Pentagon" /> 
+    <Button
+        android:id="@+id/buttonShowCustomDialog"
+        style="@style/AppTheme"
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="0.2"        
+        android:contentDescription="OCTAGON"
+        android:onClick="showDialog"
+        android:text="Octogon" />
+</LinearLayout>

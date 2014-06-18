@@ -189,7 +189,9 @@ public class AlphabetsActivity extends ActionBarActivity {
 			//Toast.makeText(this,"Rhymes...",Toast.LENGTH_LONG).show();	
 			Intent intent = new Intent(this, DisplayRhymesActivity.class);
 			startActivity(intent);
-			
+		} else if (item.getTitle().toString().equals(getString(R.string.shapes_tab))) {
+			Intent intent = new Intent(this, ShapesActivity.class);
+			startActivity(intent);			
 		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
 			//Toast.makeText(this,"More...",Toast.LENGTH_LONG).show();
 			Intent intent = new Intent(this, MoreActivity.class);

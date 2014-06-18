@@ -10,14 +10,19 @@
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <application
+        android:allowBackup="false"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        android:allowBackup="false"
         android:uiOptions="splitActionBarWhenNarrow" >
-        <activity android:name="com.appt8.android.apps.funkids.DisplayRhymesActivity" android:label="@string/title_activity_display_rhymes">
-        </activity><meta-data
+        <activity
+            android:name="com.appt8.android.apps.funkids.DisplayRhymesActivity"
+            android:label="@string/title_activity_display_rhymes" >
+        </activity>
+
+        <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
@@ -26,6 +31,7 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -76,7 +82,15 @@
             android:name="com.appt8.android.apps.funkids.RhymesActivity"
             android:label="@string/title_activity_rhymes" >
         </activity>
-        
+        <activity
+            android:name="com.appt8.android.apps.funkids.ShapesActivity"
+            android:label="@string/title_activity_shapes" >
+        </activity>
+        <activity
+            android:name="com.appt8.android.apps.funkids.ImageDialogActivity"
+            android:label="@string/title_activity_image_dialog"
+                android:theme="@android:style/Theme.Dialog" >
+        </activity>        
     </application>
 
 </manifest>

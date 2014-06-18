@@ -10,11 +10,16 @@ import android.media.MediaPlayer.OnCompletionListener;
 import android.os.Bundle;
 import android.os.Handler;
 import android.app.Activity;
+import android.content.Intent;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.text.SpannableString;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.StyleSpan;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -26,7 +31,7 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-public class DisplayRhymesActivity extends Activity implements
+public class DisplayRhymesActivity extends ActionBarActivity implements
 		OnItemSelectedListener {
 
 	private TextView startTimeField, endTimeField, rhyme_title, rhyme_content;
@@ -48,12 +53,20 @@ public class DisplayRhymesActivity extends Activity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		// Remove title bar
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+/*		ActionBar actionBar = getSupportActionBar();
+		actionBar.setDisplayShowHomeEnabled(false); //Hide the top panel home icon
+		actionBar.setDisplayShowTitleEnabled(false); //Disable the top panel home title
+*/		
+		
+		//actionBar.set
+		
+		setContentView(R.layout.fragment_display_rhymes);
+		//this.requestWindowFeature(Window.FEATURE_OPTIONS_PANEL);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		setContentView(R.layout.fragment_display_rhymes);
+		
 		
 		Spinner spinner = (Spinner) findViewById(R.id.rhymes_spinner);
 		// Create an ArrayAdapter using the string array and a default spinner
@@ -86,8 +99,8 @@ public class DisplayRhymesActivity extends Activity implements
 		progressLayout = findViewById(R.id.LinearLayout5);
 		controllersLayout = findViewById(R.id.LinearLayout6);
 		
-		controllerHandler = new Handler();
-		controllerHandler.postDelayed(hideControllerThread, 5000);
+		/*controllerHandler = new Handler();
+		controllerHandler.postDelayed(hideControllerThread, 5000);*/
 		
 		mediaPlayer = MediaPlayer.create(this, R.raw.rhyme_baba);
 		playButton = (ImageButton) findViewById(R.id.imagePlay);
@@ -255,7 +268,7 @@ public class DisplayRhymesActivity extends Activity implements
 	}
 	
 	//Autohide Play and pause buttons
-		private Runnable hideControllerThread = new Runnable() {
+/*		private Runnable hideControllerThread = new Runnable() {
 			public void run() {
 				//playButton.setVisibility(View.GONE);
 				//pauseButton.setVisibility(View.GONE);
@@ -278,7 +291,6 @@ public class DisplayRhymesActivity extends Activity implements
 			progressLayout.setVisibility(View.VISIBLE);
 			controllersLayout.setVisibility(View.VISIBLE);
 			controllerHandler.removeCallbacks(hideControllerThread);
-			hideControllers();
 		}
 		
 		@Override
@@ -303,9 +315,11 @@ public class DisplayRhymesActivity extends Activity implements
 		                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
 		                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
 		                | View.SYSTEM_UI_FLAG_FULLSCREEN
-		                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);}
+		                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+		    	showControllers();	
+		    }
 		   
-		}
+		}*/
 	class Playlist {
 		int title;
 		int content;
@@ -328,6 +342,45 @@ public class DisplayRhymesActivity extends Activity implements
 		}
 	}
 	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+				
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		
+
+		if (item.getTitle().toString().equals(getString(R.string.home_tab))) {	
+			Intent intent = new Intent(this, MainActivity.class);
+			startActivity(intent);
+		} else if (item.getTitle().toString().equals(getString(R.string.alphabets_tab))) {
+			Intent intent = new Intent(this, AlphabetsActivity.class);
+			startActivity(intent);
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.numbers_tab))) {
+			Intent intent = new Intent(this, NumbersActivity.class);
+			startActivity(intent);
+			
+		} else if (item.getTitle().toString().equals(getString(R.string.rhymes_tab))) {
+		} else if (item.getTitle().toString().equals(getString(R.string.shapes_tab))) {
+			Intent intent = new Intent(this, ShapesActivity.class);
+			startActivity(intent);	
+		} else if (item.getTitle().toString().equals(getString(R.string.more_tab))) {
+			Intent intent = new Intent(this, MoreActivity.class);
+			startActivity(intent);
+		}
+		
+		
+		return super.onOptionsItemSelected(item);
+	}	
 	public void playlistCreate(int index) {
 		playlist = new Hashtable<>();		
 		int size = getResources().getStringArray(R.array.rhymes_array).length;

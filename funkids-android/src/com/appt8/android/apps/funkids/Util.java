@@ -1,5 +1,6 @@
 package com.appt8.android.apps.funkids;
 
+import java.lang.reflect.Field;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -29,6 +30,41 @@ public class Util extends Activity {
     });
     }
 
+    public static void LogFieldNamesAndValues(String myClass, final Object valueObj)
+	{
+		try {
+			Log.i("getFieldNamesAndValues", "Begin - getFieldNamesAndValues");
+			Class c1 = valueObj.getClass();
+			Log.i("getFieldNamesAndValues",
+					"Class name got is:: " + c1.getName());
+
+			// Map fieldMap = new HashMap();
+			Field[] valueObjFields = c1.getDeclaredFields();
+
+			// compare values now
+			for (int i = 0; i < valueObjFields.length; i++) {
+
+				String fieldName = valueObjFields[i].getName();
+
+				// Log.i("getFieldNamesAndValues","Getting Field Values for Field:: "
+				// + valueObjFields[i].getName());
+				valueObjFields[i].setAccessible(true);
+
+				Object newObj = valueObjFields[i].get(valueObj);
+
+				Log.i("getFieldNamesAndValues", "Field:" + fieldName
+						+ ", Value: " + newObj);
+
+				// fieldMap.put(fieldName, newObj);
+
+			}
+			Log.i("getFieldNamesAndValues", "End - getFieldNamesAndValues");
+		} catch (IllegalArgumentException iae) {
+			Log.i("getFieldNamesAndValues Exception", iae.getMessage());
+		} catch (IllegalAccessException iae1) {
+			Log.i("getFieldNamesAndValues Exception", iae1.getMessage());
+		}
+	}
     @SuppressLint("NewApi")
 	public Bitmap getWindowSizedBitmap(Bitmap bm, Display display) {
         try {

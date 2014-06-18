@@ -10,7 +10,7 @@
         myapp:showAsAction="ifRoom|withText" />
     <item android:id="@+id/itemid_2"
         android:icon="@drawable/alphabets_tab"
-        android:title="@string/alphabets_tab"        
+        android:title="@string/alphabets_tab"
         myapp:showAsAction="ifRoom|withText" />
     <item android:id="@+id/itemid_3"
         android:title="@string/numbers_tab"
@@ -20,7 +20,12 @@
         android:title="@string/rhymes_tab"
         android:icon="@drawable/rhymes_tab"
         myapp:showAsAction="ifRoom|withText" />
-	<item android:id="@+id/itemid_5"
+<!--      <item android:id="@+id/itemid_5"
+        android:title="@string/shapes_tab"
+        android:icon="@drawable/shapes_tab"
+        myapp:showAsAction="ifRoom|withText" /> -->    
+	<item android:id="@+id/itemid_6"
         android:title="@string/more_tab"
+        android:icon="@drawable/more_tab"
         myapp:showAsAction="ifRoom|withText" />
 </menu>

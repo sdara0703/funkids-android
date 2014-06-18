@@ -11,7 +11,7 @@
     <string name="edit_message">Enter your name</string>
     <string name="welcome">Welcome Kids, It\'s the place to learn Alphabets, Numbers and Rhymes!!!</string>
     <string name="courtesy_message">Thank you for downloading the app. This fun learning app for kids brought to you by AppT8.com. Developed by Srinivasa Dara.\n</string>
-    <string name="rateme_message">Please rate this app</string>    
+    <string name="rateme_message">Please rate this app</string>
     <string name="setting_sound">Enable Sound</string>
     <string name="settings">Settings</string>
 
@@ -42,8 +42,7 @@
     <string name="W">W</string>
     <string name="X">X</string>
     <string name="Y">Y</string>
-    <string name="Z">Z</string>          
-    
+    <string name="Z">Z</string>
     <string name="surprise_pic">Surprise Image</string>
     <string name="message_zoom_touch_expand">Touch a photo to Zoom</string>
     <string name="description_zoom_touch_close">Touch this photo to close</string>
@@ -186,7 +185,7 @@
 		
 		Twinkle, twinkle, little star. \n\n
 		How I wonder what you are. \n\n	</string>
-	
+
     <!-- Display Rhymes -->
     <string-array name="rhymes_array">
         <item>Play all</item>
@@ -204,7 +203,7 @@
     <string name="initial_Time">0 min, 0 sec</string>
     <string name="unknown">--Unknown--</string>
     <string name="unknown_activity_request_code">Received an unknown activity request code %1$d in onActivityResult.</string>
-    
+
     <!-- Titles -->
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="title_item_list">Items</string>
@@ -215,7 +214,9 @@
     <string name="alphabets_tab">Alphabets</string>
     <string name="numbers_tab">Numbers</string>
     <string name="rhymes_tab">Rhymes</string>
+    <string name="shapes_tab">Shapes</string>
     <string name="more_tab">More</string>
-    
+    <string name="title_activity_shapes">ShapesActivity</string>
+    <string name="title_activity_image_dialog">ImageDialogActivity</string>
 
 </resources>
