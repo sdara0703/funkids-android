@@ -57,6 +57,8 @@ public class AlphabetsActivity extends ActionBarActivity {
      */
     private int mShortAnimationDuration;
     private Util util = new Util();
+	
+	//Test
 
     BitmapDrawable bd;
     Bitmap resizedBitmap;
